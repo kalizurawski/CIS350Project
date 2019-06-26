@@ -1,3 +1,7 @@
+/**************************************************
+ * This class is used for all universal game
+ * functions.
+ **************************************************/
 public class Game {
 
     /** time in seconds that the minigame lasts **/
@@ -5,6 +9,9 @@ public class Game {
 
     /** time in seconds that the bomb starts counting down at **/
     private static final int BOMB_TIME = 3;
+
+    /** number of attempts user has **/
+    private static final int ATTEMPTS_REM = 3;
 
     /** holds status of game **/
     private boolean gameOver;
@@ -20,9 +27,9 @@ public class Game {
      *
      * @param word used at the start of the game
      **********************************************/
-    void Game(String word) {
+    void Game(final String word) {
         setGameStartWord(word);
-        setAttemptsRemaining(3);
+        setAttemptsRemaining(ATTEMPTS_REM);
     }
 
     /***********************************************
@@ -37,11 +44,10 @@ public class Game {
     /***********************************************
      * Sets the word that starts the game.
      *
-     * @param gameStartWord word shown at the start
-     *                      of the game
+     * @param word shown at start of the game
      **********************************************/
-    public void setGameStartWord(String gameStartWord) {
-        this.gameStartWord = gameStartWord;
+    private void setGameStartWord(final String word) {
+        this.gameStartWord = word;
     }
 
     /***********************************************
@@ -50,18 +56,17 @@ public class Game {
      *
      * @return remaining attempts
      **********************************************/
-    public int getAttemptsRemaining() {
+    private int getAttemptsRemaining() {
         return attemptsRemaining;
     }
 
     /***********************************************
      * Sets attempts remaining at game.
      *
-     * @param attemptsRemaining remaining game
-     *                          attempts
+     * @param rem remaining game attempts
      **********************************************/
-    public void setAttemptsRemaining(int attemptsRemaining) {
-        this.attemptsRemaining = attemptsRemaining;
+    private void setAttemptsRemaining(final int rem) {
+        this.attemptsRemaining = rem;
     }
 
     /***********************************************
@@ -74,22 +79,23 @@ public class Game {
         // If user has no attempts left, game ends
         if (numLeft == 0) {
             setGameOver(true);
-        } else
+        } else {
             setAttemptsRemaining(numLeft - 1);
+        }
     }
 
     /***********************************************
-     * Sets the gameOver variable
+     * Sets the gameOver variable.
      *
-     * @param gameOver boolean as to whether or not
+     * @param over boolean as to whether or not
      *                 the game is over
      **********************************************/
-    public void setGameOver(boolean gameOver) {
-        this.gameOver = gameOver;
+    private void setGameOver(final boolean over) {
+        this.gameOver = over;
     }
 
     /***********************************************
-     * Starts the game
+     * Starts the game.
      **********************************************/
     public void startGame() {
         setGameOver(false);

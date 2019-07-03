@@ -1,20 +1,19 @@
+package GameProject;
+
 /**************************************************
  * This class is used for all universal game
  * functions.
  **************************************************/
 public class Game {
 
-    /** time in seconds that the minigame lasts **/
-    private static final int TOTAL_TIME = 5;
-
-    /** time in seconds that the bomb starts counting down at **/
-    private static final int BOMB_TIME = 3;
-
     /** number of attempts user has **/
     private static final int ATTEMPTS_REM = 3;
 
-    /** holds status of game **/
+    /** holds status of game over **/
     private boolean gameOver;
+
+    /** holds status of level **/
+    private boolean win;
 
     /** word that begins the game **/
     private String gameStartWord;
@@ -82,6 +81,16 @@ public class Game {
         } else {
             setAttemptsRemaining(numLeft - 1);
         }
+    }
+
+    /***********************************************
+     * Sets the win variable.
+     *
+     * @param status boolean as to whether or not
+     *                 the game has been won
+     **********************************************/
+    public void setWin(final boolean status) {
+        this.win = status;
     }
 
     /***********************************************

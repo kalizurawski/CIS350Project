@@ -1,15 +1,12 @@
 package GameProject;
 
-import java.awt.event.*;
 import java.util.Random;
-
-import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
 /**************************************************
  * This class is used for all custom functionality
  * for the "Collect" game.
  **************************************************/
-public class Collect extends Game implements KeyListener {
+public class Collect {
 
     /** height of board. **/
     private static final int BOARD_HEIGHT = 5;
@@ -17,14 +14,23 @@ public class Collect extends Game implements KeyListener {
     /** width of board. **/
     private static final int BOARD_WIDTH = 5;
 
+    /** amount of time for the level. **/
+    private static final int INIT_TIME = 5;
+
+    /** game win status. **/
+    private boolean win;
+
+    /** game over status. **/
+    private boolean gameover;
+
+    /** amount of time remaining. **/
+    private int timeRemaining;
+
     /** coin x location. **/
     private int coinX;
 
     /** coin y location. **/
     private int coinY;
-
-    /** whether or not game is in play. **/
-    private boolean inPlay;
 
     /** random number generator. **/
     private Random rand = new Random();
@@ -41,19 +47,18 @@ public class Collect extends Game implements KeyListener {
      * @param word used at the start of the game
      **********************************************/
     public Collect(final String word) {
-        // super(word);
-
-        // add key listener
-        addKeyListener(this);
-
         // initialize all variables
         boardInit();
         playerInit();
         coinInit();
-        super.setWin(false);
-        inPlay = true;
+        setGameOver(false);
+        setWin(false);
+        setTimeRemaining(INIT_TIME);
     }
 
+    /***********************************************
+     * Initializes board.
+     **********************************************/
     private void boardInit() {
         System.out.println("Initializing board...");
         // initialize board array
@@ -67,6 +72,9 @@ public class Collect extends Game implements KeyListener {
         }
     }
 
+    /***********************************************
+     * Initializes player placement.
+     **********************************************/
     private void playerInit() {
         // generates random location for player
         int x = rand.nextInt(BOARD_WIDTH);
@@ -77,6 +85,9 @@ public class Collect extends Game implements KeyListener {
         board[player.getCurrX()][ player.getCurrY()] = SpaceType.PLAYER;
     }
 
+    /***********************************************
+     * Initializes coin placement.
+     **********************************************/
     private void coinInit() {
         coinX = player.getCurrX();
         coinY = player.getCurrY();
@@ -94,13 +105,135 @@ public class Collect extends Game implements KeyListener {
         board[coinX][coinY] = SpaceType.COIN;
     }
 
-    private void checkWin() {
+    /***********************************************
+     * Moves player left one space.
+     **********************************************/
+    public void moveLeft() {
+        // get old spot
+        int x = player.getCurrX();
+        int y = player.getCurrY();
+
+        // move player
+        player.moveLeft();
+
+        // update board
+        board[x][y] = SpaceType.EMPTY;
+        board[player.getCurrX()][ player.getCurrY()] = SpaceType.PLAYER;
+    }
+
+    /***********************************************
+     * Moves player right one space.
+     **********************************************/
+    public void moveRight() {
+        // get old spot
+        int x = player.getCurrX();
+        int y = player.getCurrY();
+
+        // move player
+        player.moveRight();
+
+        // update board
+        board[x][y] = SpaceType.EMPTY;
+        board[player.getCurrX()][ player.getCurrY()] = SpaceType.PLAYER;
+    }
+
+    /***********************************************
+     * Moves player up one space.
+     **********************************************/
+    public void moveUp() {
+        // get old spot
+        int x = player.getCurrX();
+        int y = player.getCurrY();
+
+        // move player
+        player.moveUp();
+
+        // update board
+        board[x][y] = SpaceType.EMPTY;
+        board[player.getCurrX()][ player.getCurrY()] = SpaceType.PLAYER;
+    }
+
+    /***********************************************
+     * Moves player down one space.
+     **********************************************/
+    public void moveDown() {
+        // get old spot
+        int x = player.getCurrX();
+        int y = player.getCurrY();
+
+        // move player
+        player.moveDown();
+
+        // update board
+        board[x][y] = SpaceType.EMPTY;
+        board[player.getCurrX()][ player.getCurrY()] = SpaceType.PLAYER;
+    }
+
+    /***********************************************
+     * Checks to see if the level has been won.
+     *
+     * @return if the player has won the game
+     **********************************************/
+    public boolean checkWin() {
         if (coinX == player.getCurrX() && coinY == player.getCurrY()) {
-            inPlay = false;         // take game out of play
-            super.setWin(true);
+            setWin(true);
         } else {
-            super.setWin(false);
+            setWin(false);
         }
+        return this.win;
+    }
+
+    /***********************************************
+     * Checks to see if game is over and should be
+     * sent back to the menu screen.
+     *
+     * @return boolean of game status
+     **********************************************/
+    public boolean checkGameOver() {
+        if (checkWin()) {
+            setGameOver(false);
+        } else if (timeRemaining == 0) {
+            setGameOver(true);
+        } else {
+            setGameOver(false);
+        }
+        return this.gameover;
+    }
+
+    /***********************************************
+     * Sets whether or not the level has been won.
+     *
+     * @param status level win status
+     **********************************************/
+    private void setWin(final boolean status) {
+        this.win = status;
+    }
+
+    /***********************************************
+     * Sets whether or not the game is over.
+     *
+     * @param status gameover status
+     **********************************************/
+    private void setGameOver(final boolean status) {
+        this.gameover = status;
+    }
+
+    /***********************************************
+     * Sets the time remaining in the level.
+     *
+     * @param time remaining time
+     **********************************************/
+    public void setTimeRemaining(final int time) {
+        this.timeRemaining = time;
+    }
+
+    /***********************************************
+     * Gets the time remaining in the level.
+     *
+     * @return time remaining
+     **********************************************/
+    public int getTimeRemaining() {
+        return this.timeRemaining;
     }
 
     /***********************************************
@@ -149,33 +282,5 @@ public class Collect extends Game implements KeyListener {
     public int getBoardWidth() {
         return this.BOARD_WIDTH;
     }
-
-    /** Handle the key typed event **/
-    @Override
-    public void keyTyped(final KeyEvent e) {
-    }
-
-    /** Handle the key pressed event **/
-    @Override
-    public void keyPressed(final KeyEvent e) {
-        if (inPlay) {
-            if (e.getKeyCode() == e.VK_RIGHT)
-                player.moveRight();
-            else if (e.getKeyCode() == e.VK_LEFT)
-                player.moveLeft();
-            else if (e.getKeyCode() == e.VK_UP)
-                player.moveUp();
-            else if (e.getKeyCode() == e.VK_DOWN)
-                player.moveDown();
-
-            checkWin();
-        }
-    }
-
-    /** Handle the key released event **/
-    @Override
-    public void keyReleased(final KeyEvent e) {
-    }
-
 
 }

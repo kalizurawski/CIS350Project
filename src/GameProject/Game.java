@@ -6,19 +6,19 @@ package GameProject;
  **************************************************/
 public class Game {
 
-    /** number of attempts user has **/
+    /** number of attempts user has. **/
     private static final int ATTEMPTS_REM = 3;
 
-    /** holds status of game over **/
+    /** holds status of game over. **/
     private boolean gameOver;
 
-    /** holds status of level **/
+    /** holds status of level. **/
     private boolean win;
 
-    /** word that begins the game **/
+    /** word that begins the game. **/
     private String gameStartWord;
 
-    /** number of remaining attempts at game **/
+    /** number of remaining attempts at game. **/
     private int attemptsRemaining;
 
     /***********************************************
@@ -82,6 +82,8 @@ public class Game {
             setAttemptsRemaining(numLeft - 1);
         }
     }
+
+    public boolean getWin() { return this.win; }
 
     /***********************************************
      * Sets the win variable.

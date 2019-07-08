@@ -2,45 +2,46 @@ package GameProject;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.event.*;
+import java.awt.event.KeyEvent;
 
-public class CollectPanel extends JPanel {
+public class CollectPanel extends JPanel implements KeyListener {
 
-    /** player icon for moving right **/
-    private ImageIcon playerRight;
-
-    /** player icon for moving left **/
-    private ImageIcon playerLeft;
-
-    /** player icon for moving up or down to left **/
+    /** player icon for moving up or down to left. **/
     private ImageIcon playerJumpLeft;
 
-    /** player icon for moving up or down to right**/
+    /** player icon for moving up or down to right. **/
     private ImageIcon playerJumpRight;
 
-    /** player icon standing left **/
+    /** player icon standing left. **/
     private ImageIcon playerStandingLeft;
 
-    /** player icon standing right **/
+    /** player icon standing right. **/
     private ImageIcon playerStandingRight;
 
-    /** coin icon **/
+    /** coin icon. **/
     private ImageIcon coinObject;
 
-    /** square sizes **/
-    private static final int SQUARE_SIZE = 100;
+    /** whether or not game is in play. **/
+    private boolean inPlay;
 
-    /** scaled image size **/
+    /** game size. **/
+    private static final int GAME_SIZE = 500;
+
+    /** scaled image size. **/
     private static final int IMAGE_SIZE = 100;
 
-    /** board **/
+    /** board. **/
     private JButton[][] board;
 
-    /** board panel **/
+    /** board panel. **/
     private JPanel boardPanel;
 
-    /** game class **/
+    /** game class. **/
     private Collect game;
+
+    /** bomb/fuse panel. **/
+    private FusePanel fusePanel;
 
     /***********************************************
      * Constructor for the game space.
@@ -48,21 +49,31 @@ public class CollectPanel extends JPanel {
     public CollectPanel() {
         // initialize game
         game = new Collect("Collect!");
+        inPlay = true;
 
         // initialize board
         boardPanel = new JPanel();
-        boardPanel.setLayout(new GridLayout(game.getBoardHeight(), game.getBoardWidth(), 1, 1));
+        boardPanel.setLayout(new GridLayout(game.getBoardHeight(),
+                game.getBoardWidth(), 1, 1));
         board = new JButton[game.getBoardWidth()][game.getBoardHeight()];
+
+        // initialize fuse panel
+        fusePanel = new FusePanel();
 
         // initialize icons
         initIcons();
 
-        // draws the game panel
-        drawBoard();
+        // initializes board
+        initBoard();
+
+        // add key listener
+        addKeyListener(this);
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(false);
 
         // add panel to frame
         add(boardPanel, BorderLayout.CENTER);
-        boardPanel.setPreferredSize(new Dimension(600, 600));
+        boardPanel.setPreferredSize(new Dimension(GAME_SIZE, GAME_SIZE));
     }
 
     /***********************************************
@@ -70,23 +81,29 @@ public class CollectPanel extends JPanel {
      **********************************************/
     private void initIcons() {
         // coin icon
-        coinObject = new ImageIcon(new ImageIcon("coin.jpg").getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
-
-        // left/right icons
-        playerLeft = new ImageIcon(new ImageIcon("left.png").getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
-        playerRight = new ImageIcon(new ImageIcon("right.png").getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
+        coinObject = new ImageIcon(new ImageIcon("coin.jpg").getImage()
+                .getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
+                        Image.SCALE_DEFAULT));
 
         // up/down icons
-        playerJumpLeft = new ImageIcon(new ImageIcon("jumpLeft.png").getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
-        playerJumpRight = new ImageIcon(new ImageIcon("jumpRight.png").getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
+        playerJumpLeft = new ImageIcon(new ImageIcon("jumpLeft.png")
+                .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
+
+        playerJumpRight = new ImageIcon(new ImageIcon("jumpRight.png")
+                .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
 
         // standing icons
-        playerStandingLeft = new ImageIcon(new ImageIcon("standingLeft.jpg").getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
-        playerStandingRight = new ImageIcon(new ImageIcon("standingRight.jpg").getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
+        playerStandingLeft = new ImageIcon(new ImageIcon("standingLeft.jpg").getImage()
+                .getScaledInstance(IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
+        playerStandingRight = new ImageIcon(new ImageIcon("standingRight.jpg").getImage()
+                .getScaledInstance(IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
     }
 
-    private void drawBoard() {
-        System.out.println("Drawing board...");
+    /***********************************************
+     * Initializes the board.
+     **********************************************/
+    private void initBoard() {
+        System.out.println("Initializing board...");
         for (int r = 0; r < game.getBoardHeight(); r++) {
             for (int c = 0; c < game.getBoardWidth(); c++) {
                 if (game.pieceAt(c, r) == SpaceType.EMPTY) {
@@ -97,24 +114,28 @@ public class CollectPanel extends JPanel {
                     board[c][r] = new JButton(null, pickIcon());
                 }
 
-                setBackGroundColor(c, r);
+                board[c][r].setBackground(Color.WHITE);
                 boardPanel.add(board[c][r]);
             }
         }
     }
 
-    /*************************************************************
-     * Sets the color of a particular square on the board.
-     *
-     * @param r integer of row
-     * @param c integer of column
-     ************************************************************/
-    private void setBackGroundColor(final int c, final int r) {
-        if ((c % 2 == 1 && r % 2 == 0) || (c % 2 == 0 && r % 2 == 1)) {
-            board[c][r].setBackground(Color.LIGHT_GRAY);
-        } else if ((c % 2 == 0 && r % 2 == 0) || (c % 2 == 1 && r % 2 == 1)) {
-            board[c][r].setBackground(Color.WHITE);
+    /***********************************************
+     * Displays board to the player.
+     **********************************************/
+    private void displayBoard() {
+        for (int r = 0; r < game.getBoardHeight(); r++) {
+            for (int c = 0; c < game.getBoardWidth(); c++) {
+                if (game.pieceAt(c, r) == SpaceType.EMPTY) {
+                    board[c][r].setIcon(null);
+                } else if (game.pieceAt(c, r) == SpaceType.PLAYER) {
+                    board[c][r].setIcon(pickIcon());
+                } else if (game.pieceAt(c, r) == SpaceType.COIN) {
+                    board[c][r].setIcon(coinObject);
+                }
+            }
         }
+        repaint();
     }
 
     /***********************************************
@@ -148,6 +169,45 @@ public class CollectPanel extends JPanel {
                 }
             default:
                 return playerStandingLeft;
+        }
+    }
+
+    /***********************************************
+     * Key listener for keyPressed event.
+     *
+     * @param e key event
+     **********************************************/
+    public void keyPressed(final KeyEvent e) {
+    }
+
+    /***********************************************
+     * Key listener for keyReleased event.
+     *
+     * @param e key event
+     **********************************************/
+    public void keyReleased(final KeyEvent e) {
+    }
+
+    /***********************************************
+     * Key listener for keyTyped event.
+     *
+     * @param e key event
+     **********************************************/
+    public void keyTyped(final KeyEvent e) {
+        if (e.getKeyChar() == 'd') {
+            game.moveRight();
+        } else if (e.getKeyChar() == 'a') {
+            game.moveLeft();
+        } else if (e.getKeyChar() == 'w') {
+            game.moveUp();
+        } else if (e.getKeyChar() == 's') {
+            game.moveDown();
+        }
+        displayBoard();
+
+        // if this level is complete
+        if (game.checkWin()) {
+            System.out.println("Level fin.");
         }
     }
 }

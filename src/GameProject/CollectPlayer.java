@@ -46,10 +46,11 @@ public class CollectPlayer {
      **********************************************/
     public void moveRight() {
         // if not at far right, move one to right
-        if (currX != maxX)
+        if (currX != maxX - 1)
             currX += 1;
         direction = Directions.RIGHT;
         vertical = Directions.NONE;
+        System.out.println("Player: " + currX + " " + currY);
     }
 
     /***********************************************
@@ -61,6 +62,7 @@ public class CollectPlayer {
             currX -= 1;
         direction = Directions.LEFT;
         vertical = Directions.NONE;
+        System.out.println("Player: " + currX + " " + currY);
     }
 
     /***********************************************
@@ -68,9 +70,10 @@ public class CollectPlayer {
      **********************************************/
     public void moveUp() {
         // if not at top, move up
-        if (currY != maxY)
-            currY += 1;
+        if (currY != 0)
+            currY -= 1;
         vertical = Directions.UP;
+        System.out.println("Player: " + currX + " " + currY);
     }
 
     /***********************************************
@@ -78,9 +81,10 @@ public class CollectPlayer {
      **********************************************/
     public void moveDown() {
         // if not at bottom, move down
-        if (currY != 0)
-            currY -= 1;
+        if (currY != maxY - 1)
+            currY += 1;
         vertical = Directions.DOWN;
+        System.out.println("Player: " + currX + " " + currY);
     }
 
     /***********************************************

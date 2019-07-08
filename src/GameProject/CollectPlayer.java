@@ -1,6 +1,10 @@
 package GameProject;
 
-public class Collect_Player {
+/**************************************************
+ * This class is used in conjuction with the Collect
+ * class and operates as the player piece.
+ **************************************************/
+public class CollectPlayer {
 
     /** current x location **/
     private int currX;
@@ -14,19 +18,27 @@ public class Collect_Player {
     /** maximum y value **/
     private int maxY;
 
+    /** direction they are facing **/
+    private Directions direction;
+
+    /** vertical direction of movement **/
+    private Directions vertical;
+
     /***********************************************
-     * Initializes object of the Collect_Player class.
+     * Initializes object of the CollectPlayer class.
      *
      * @param x is the x location of the player
      * @param y is the y location of the player
      * @param maxX is the width of the board
      * @param maxY is the height of the board
      **********************************************/
-    public Collect_Player(int x, int y, int maxX, int maxY) {
+    public CollectPlayer(int x, int y, int maxX, int maxY) {
         this.currX = x;
         this.currY = y;
         this.maxX = maxX;
         this.maxY = maxY;
+        this.direction = Directions.LEFT;
+        this.vertical = Directions.NONE;
     }
 
     /***********************************************
@@ -36,6 +48,8 @@ public class Collect_Player {
         // if not at far right, move one to right
         if (currX != maxX)
             currX += 1;
+        direction = Directions.RIGHT;
+        vertical = Directions.NONE;
     }
 
     /***********************************************
@@ -45,6 +59,8 @@ public class Collect_Player {
         // if not at far left, move one to left
         if (currX != 0)
             currX -= 1;
+        direction = Directions.LEFT;
+        vertical = Directions.NONE;
     }
 
     /***********************************************
@@ -54,6 +70,7 @@ public class Collect_Player {
         // if not at top, move up
         if (currY != maxY)
             currY += 1;
+        vertical = Directions.UP;
     }
 
     /***********************************************
@@ -63,6 +80,7 @@ public class Collect_Player {
         // if not at bottom, move down
         if (currY != 0)
             currY -= 1;
+        vertical = Directions.DOWN;
     }
 
     /***********************************************
@@ -99,5 +117,23 @@ public class Collect_Player {
      **********************************************/
     public void setCurrY(int y) {
         this.currX = y;
+    }
+
+    /***********************************************
+     * Gets the direction of the player
+     *
+     * @return player's current direction
+     **********************************************/
+    public Directions getDirection() {
+        return this.direction;
+    }
+
+    /***********************************************
+     * Gets the current vertical of the player
+     *
+     * @return player's current vertical
+     **********************************************/
+    public Directions getVertical() {
+        return this.vertical;
     }
 }

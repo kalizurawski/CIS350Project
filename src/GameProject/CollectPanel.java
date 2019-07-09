@@ -51,14 +51,14 @@ public class CollectPanel extends JPanel implements KeyListener {
         game = new Collect("Collect!");
         inPlay = true;
 
+        // initialize fuse panel
+        fusePanel = new FusePanel();
+
         // initialize board
         boardPanel = new JPanel();
         boardPanel.setLayout(new GridLayout(game.getBoardHeight(),
                 game.getBoardWidth(), 1, 1));
         board = new JButton[game.getBoardWidth()][game.getBoardHeight()];
-
-        // initialize fuse panel
-        fusePanel = new FusePanel();
 
         // initialize icons
         initIcons();
@@ -72,8 +72,9 @@ public class CollectPanel extends JPanel implements KeyListener {
         setFocusTraversalKeysEnabled(false);
 
         // add panel to frame
-        add(boardPanel, BorderLayout.CENTER);
-        boardPanel.setPreferredSize(new Dimension(GAME_SIZE, GAME_SIZE));
+        add(fusePanel, BorderLayout.SOUTH);
+        add(boardPanel, BorderLayout.NORTH);
+       // boardPanel.setPreferredSize(new Dimension(GAME_SIZE, GAME_SIZE));
     }
 
     /***********************************************

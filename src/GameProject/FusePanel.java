@@ -35,7 +35,7 @@ public class FusePanel extends JPanel {
      **********************************************/
     public FusePanel() {
         // set panel size
-        setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        //setPreferredSize(new Dimension(WIDTH, HEIGHT));
 
         // init icons
         initIcons();

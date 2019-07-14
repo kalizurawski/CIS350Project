@@ -56,9 +56,9 @@ public class CollectPanel extends JPanel implements KeyListener {
 
         // initialize board
         boardPanel = new JPanel();
-        boardPanel.setLayout(new GridLayout(game.getBoardHeight(),
-                game.getBoardWidth(), 1, 1));
-        board = new JButton[game.getBoardWidth()][game.getBoardHeight()];
+        boardPanel.setLayout(new GridLayout(game.BOARD_HEIGHT,
+                game.BOARD_WIDTH, 1, 1));
+        board = new JButton[game.BOARD_WIDTH][game.BOARD_HEIGHT];
 
         // initialize icons
         initIcons();
@@ -107,8 +107,8 @@ public class CollectPanel extends JPanel implements KeyListener {
      **********************************************/
     private void initBoard() {
         System.out.println("Initializing board...");
-        for (int r = 0; r < game.getBoardHeight(); r++) {
-            for (int c = 0; c < game.getBoardWidth(); c++) {
+        for (int r = 0; r < game.BOARD_WIDTH; r++) {
+            for (int c = 0; c < game.BOARD_WIDTH; c++) {
                 if (game.pieceAt(c, r) == SpaceType.EMPTY) {
                     board[c][r] = new JButton("", null);
                 } else if (game.pieceAt(c, r) == SpaceType.COIN) {
@@ -127,8 +127,8 @@ public class CollectPanel extends JPanel implements KeyListener {
      * Displays board to the player.
      **********************************************/
     private void displayBoard() {
-        for (int r = 0; r < game.getBoardHeight(); r++) {
-            for (int c = 0; c < game.getBoardWidth(); c++) {
+        for (int r = 0; r < game.BOARD_HEIGHT; r++) {
+            for (int c = 0; c < game.BOARD_WIDTH; c++) {
                 if (game.pieceAt(c, r) == SpaceType.EMPTY) {
                     board[c][r].setIcon(null);
                 } else if (game.pieceAt(c, r) == SpaceType.PLAYER) {
@@ -210,7 +210,8 @@ public class CollectPanel extends JPanel implements KeyListener {
 
         // if this level is complete
         if (game.checkWin()) {
-            System.out.println("Level fin.");
+            JOptionPane.showMessageDialog(this, "You win!");
+            System.exit(0);
         }
     }
 }

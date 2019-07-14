@@ -1,5 +1,6 @@
 package GameProject;
 
+import javax.swing.*;
 import java.util.Random;
 
 /**************************************************
@@ -9,10 +10,10 @@ import java.util.Random;
 public class Collect {
 
     /** height of board. **/
-    private static final int BOARD_HEIGHT = 5;
+    public static final int BOARD_HEIGHT = 5;
 
     /** width of board. **/
-    private static final int BOARD_WIDTH = 5;
+    public static final int BOARD_WIDTH = 5;
 
     /** amount of time for the level. **/
     private static final int INIT_TIME = 5;
@@ -170,6 +171,16 @@ public class Collect {
     }
 
     /***********************************************
+     * This function is for testing purposes only
+     **********************************************/
+    public void forceWin() {
+        player.setCurrX(1);
+        player.setCurrY(1);
+        coinX = 1;
+        coinY = 1;
+    }
+
+    /***********************************************
      * Checks to see if the level has been won.
      *
      * @return if the player has won the game
@@ -191,7 +202,7 @@ public class Collect {
      **********************************************/
     public boolean checkGameOver() {
         if (checkWin()) {
-            setGameOver(false);
+            setGameOver(true);
         } else if (timeRemaining == 0) {
             setGameOver(true);
         } else {
@@ -222,9 +233,11 @@ public class Collect {
      * Sets the time remaining in the level.
      *
      * @param time remaining time
+     * @return time remaining (testing only)
      **********************************************/
-    public void setTimeRemaining(final int time) {
+    public int setTimeRemaining(final int time) {
         this.timeRemaining = time;
+        return time;
     }
 
     /***********************************************
@@ -255,23 +268,4 @@ public class Collect {
     public Directions getPlayerDirection() {
         return player.getDirection();
     }
-
-    /***********************************************
-     * Gets the height of the board.
-     *
-     * @return board height
-     **********************************************/
-    public int getBoardHeight() {
-        return this.BOARD_HEIGHT;
-    }
-
-    /***********************************************
-     * Gets the width of the board
-     *
-     * @return board width
-     **********************************************/
-    public int getBoardWidth() {
-        return this.BOARD_WIDTH;
-    }
-
 }

@@ -19,7 +19,7 @@ public class WarioWareGUI extends JFrame {
     	initIcons();
 
     	JFrame guiFrame = new JFrame("Wario Ware 2.0");
-    	guiFrame.setPreferredSize(new Dimension(500,500));
+    	guiFrame.setPreferredSize(new Dimension(500, 500));
     	guiFrame.setLocation(500, 250);
     	guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	guiFrame.pack();
@@ -52,9 +52,7 @@ public class WarioWareGUI extends JFrame {
     }
 
     public static void main(final String args[]) {
-
         WarioWareGUI gui = new WarioWareGUI();
-
     }
     
     public void launchCoins() {
@@ -70,7 +68,6 @@ public class WarioWareGUI extends JFrame {
     }
     
     public void launchMemory() {
-        
     	MemoryBoard b = new MemoryBoard();
 
         b.setPreferredSize(new Dimension(500,500)); //need to use this instead of setSize
@@ -79,7 +76,6 @@ public class WarioWareGUI extends JFrame {
         setTitle("Memory Match");
         b.pack();
         b.setVisible(true);
-        
     }
     
     /***********************************************
@@ -90,7 +86,5 @@ public class WarioWareGUI extends JFrame {
         ThinkingMario = new ImageIcon(new ImageIcon("ThinkingMario.png").getImage()
                 .getScaledInstance(100, 100,
                         Image.SCALE_DEFAULT));
-        
     }
-    
 }

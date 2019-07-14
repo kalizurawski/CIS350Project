@@ -60,10 +60,11 @@ public class WarioWareGUI extends JFrame {
     public void launchCoins() {
     	
       CollectPanel collect = new CollectPanel();
-    	
+
+      collect.setLocation(500, 250);
       setContentPane(collect);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      setTitle("Wario Ware 2.0");
+      setTitle("Coin Collect");
       pack();
       setVisible(true);
     }
@@ -71,9 +72,11 @@ public class WarioWareGUI extends JFrame {
     public void launchMemory() {
         
     	MemoryBoard b = new MemoryBoard();
+
         b.setPreferredSize(new Dimension(500,500)); //need to use this instead of setSize
         b.setLocation(500, 250);
         b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Memory Match");
         b.pack();
         b.setVisible(true);
         

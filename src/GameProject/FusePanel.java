@@ -27,15 +27,6 @@ public class FusePanel extends JPanel{
     /** start time. **/
     private static final int START_TIME = 5;
 
-    /** fuse width. **/
-    private static final int FUSE_WIDTH = IMAGE_SIZE;
-
-    /** fuse length. **/
-    private int fuseLength = 301;
-
-    /** fuse length difference. **/
-    private static final int FUSE_DIFF = 70;
-
     /** text area for countdown. **/
     private JLabel timeRemaining;
 
@@ -50,12 +41,6 @@ public class FusePanel extends JPanel{
 
     /** bomb icon. **/
     private ImageIcon bomb;
-
-    /** fuse label. **/
-    private JLabel fuseSpot;
-
-    /** fuse icon. **/
-    private ImageIcon fuse;
 
     /** explosion icon. **/
     private ImageIcon explosion;
@@ -108,12 +93,6 @@ public class FusePanel extends JPanel{
         c.gridy = 1;
         bombSpot = new JLabel(bomb);
         add(bombSpot, c);
-
-        // draw fuse
-        c.gridy = 2;
-        c.gridheight = FUSE_DIFF * 5;
-        fuseSpot = new JLabel(fuse);
-        add(fuseSpot, c);
     }
 
     /***********************************************
@@ -133,10 +112,6 @@ public class FusePanel extends JPanel{
                         Image.SCALE_DEFAULT));
         explosion = new ImageIcon(new ImageIcon("explosion.png").getImage()
                 .getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
-                        Image.SCALE_DEFAULT));
-        // fuse
-        fuse = new ImageIcon(new ImageIcon("fuse.png").getImage()
-                .getScaledInstance(FUSE_WIDTH, fuseLength,
                         Image.SCALE_DEFAULT));
 
         // count
@@ -210,15 +185,6 @@ public class FusePanel extends JPanel{
         private void updatePanel() {
             // change time icon
             timeRemaining.setIcon(getNumber(time));
-
-            // change fuse length
-            if (fuseLength >= FUSE_DIFF) {
-                fuseLength -= FUSE_DIFF;
-            }
-            fuse = new ImageIcon(new ImageIcon("fuse.png").getImage()
-                    .getScaledInstance(FUSE_WIDTH, fuseLength,
-                            Image.SCALE_DEFAULT));
-            fuseSpot.setIcon(fuse);
 
             // if time is zero change bomb to explosion
             if (time == 0) {

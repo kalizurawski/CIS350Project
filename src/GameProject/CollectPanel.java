@@ -72,9 +72,11 @@ public class CollectPanel extends JPanel implements KeyListener {
         setFocusTraversalKeysEnabled(false);
 
         // add panel to frame
-        add(fusePanel, BorderLayout.SOUTH);
-        add(boardPanel, BorderLayout.NORTH);
-       // boardPanel.setPreferredSize(new Dimension(GAME_SIZE, GAME_SIZE));
+        add(fusePanel, BorderLayout.EAST);
+        add(boardPanel, BorderLayout.CENTER);
+
+        // start timer
+        fusePanel.startTimer();
     }
 
     /***********************************************

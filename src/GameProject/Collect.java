@@ -228,15 +228,6 @@ public class Collect {
     }
 
     /***********************************************
-     * Gets the time remaining in the level.
-     *
-     * @return time remaining
-     **********************************************/
-    public int getTimeRemaining() {
-        return this.timeRemaining;
-    }
-
-    /***********************************************
      * Gets the piece at a given row and column.
      *
      * @param col column of space

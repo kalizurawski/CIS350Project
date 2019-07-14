@@ -7,7 +7,7 @@ public class WarioWareGUI extends JFrame {
     public WarioWareGUI() {
         // init game
         CollectPanel collect = new CollectPanel();
-
+        //FusePanel collect = new FusePanel();
         // set pane
         setContentPane(collect);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

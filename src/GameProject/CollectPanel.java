@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.KeyEvent;
 
+import static java.lang.Character.toLowerCase;
+
 public class CollectPanel extends JPanel implements KeyListener {
 
     /** player icon for moving up or down to left. **/
@@ -21,12 +23,6 @@ public class CollectPanel extends JPanel implements KeyListener {
 
     /** coin icon. **/
     private ImageIcon coinObject;
-
-    /** whether or not game is in play. **/
-    private boolean inPlay;
-
-    /** game size. **/
-    private static final int GAME_SIZE = 500;
 
     /** scaled image size. **/
     private static final int IMAGE_SIZE = 100;
@@ -49,16 +45,15 @@ public class CollectPanel extends JPanel implements KeyListener {
     public CollectPanel() {
         // initialize game
         game = new Collect("Collect!");
-        inPlay = true;
 
         // initialize fuse panel
         fusePanel = new FusePanel();
 
         // initialize board
         boardPanel = new JPanel();
-        boardPanel.setLayout(new GridLayout(game.BOARD_HEIGHT,
-                game.BOARD_WIDTH, 1, 1));
-        board = new JButton[game.BOARD_WIDTH][game.BOARD_HEIGHT];
+        boardPanel.setLayout(new GridLayout(Collect.BOARD_HEIGHT,
+                Collect.BOARD_WIDTH, 1, 1));
+        board = new JButton[Collect.BOARD_WIDTH][Collect.BOARD_HEIGHT];
 
         // initialize icons
         initIcons();
@@ -107,8 +102,8 @@ public class CollectPanel extends JPanel implements KeyListener {
      **********************************************/
     private void initBoard() {
         System.out.println("Initializing board...");
-        for (int r = 0; r < game.BOARD_WIDTH; r++) {
-            for (int c = 0; c < game.BOARD_WIDTH; c++) {
+        for (int r = 0; r < Collect.BOARD_WIDTH; r++) {
+            for (int c = 0; c < Collect.BOARD_WIDTH; c++) {
                 if (game.pieceAt(c, r) == SpaceType.EMPTY) {
                     board[c][r] = new JButton("", null);
                 } else if (game.pieceAt(c, r) == SpaceType.COIN) {
@@ -127,8 +122,8 @@ public class CollectPanel extends JPanel implements KeyListener {
      * Displays board to the player.
      **********************************************/
     private void displayBoard() {
-        for (int r = 0; r < game.BOARD_HEIGHT; r++) {
-            for (int c = 0; c < game.BOARD_WIDTH; c++) {
+        for (int r = 0; r < Collect.BOARD_HEIGHT; r++) {
+            for (int c = 0; c < Collect.BOARD_WIDTH; c++) {
                 if (game.pieceAt(c, r) == SpaceType.EMPTY) {
                     board[c][r].setIcon(null);
                 } else if (game.pieceAt(c, r) == SpaceType.PLAYER) {
@@ -197,13 +192,13 @@ public class CollectPanel extends JPanel implements KeyListener {
      * @param e key event
      **********************************************/
     public void keyTyped(final KeyEvent e) {
-        if (e.getKeyChar() == 'd') {
+        if (toLowerCase(e.getKeyChar()) == 'd') {
             game.moveRight();
-        } else if (e.getKeyChar() == 'a') {
+        } else if (toLowerCase(e.getKeyChar()) == 'a') {
             game.moveLeft();
-        } else if (e.getKeyChar() == 'w') {
+        } else if (toLowerCase(e.getKeyChar()) == 'w') {
             game.moveUp();
-        } else if (e.getKeyChar() == 's') {
+        } else if (toLowerCase(e.getKeyChar()) == 's') {
             game.moveDown();
         }
         displayBoard();

@@ -31,10 +31,10 @@ public class FusePanel extends JPanel{
     private JLabel timeRemaining;
 
     /** timer definition. **/
-    private Timer timer;
+    private transient Timer timer;
 
     /** timer task definition. **/
-    private TimerTask task;
+    private transient TimerTask task;
 
     /** bomb label. **/
     private JLabel bombSpot;

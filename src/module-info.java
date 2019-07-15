@@ -4,4 +4,5 @@ module CIS350Project {
 
 	requires java.desktop;
 	requires junit;
+	requires java.base;
 }

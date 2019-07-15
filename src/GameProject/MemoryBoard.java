@@ -91,7 +91,7 @@ public class MemoryBoard extends JFrame {
      * GUI, and places the buttons in the frame.
      *****************************************************************/
 
-    public MemoryBoard(){
+    public MemoryBoard() {
 
         //Initializes all icons
         initIcons();

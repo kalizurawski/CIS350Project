@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://findbugs.sourceforge.net/xsl/default.xsl"?>
+
+<BugCollection version="3.0.1" sequence="0" timestamp="1563166471962" analysisTimestamp="1563166468586" release="">
+  <Project projectName="CIS350Project[Project]">
+    <Jar>C:\Users\Kali Zurawski\documents\School\CIS350\CIS350Project\out\production\Project\GameProject\Collect.class</Jar>
+    <Jar>C:\Users\Kali Zurawski\documents\School\CIS350\CIS350Project\out\production\Project\GameProject\CollectPanel$1.class</Jar>
+    <Jar>C:\Users\Kali Zurawski\documents\School\CIS350\CIS350Project\out\production\Project\GameProject\CollectPanel.class</Jar>
+    <Jar>C:\Users\Kali Zurawski\documents\School\CIS350\CIS350Project\out\production\Project\GameProject\CollectPlayer.class</Jar>
+    <Jar>C:\Users\Kali Zurawski\documents\School\CIS350\CIS350Project\out\production\Project\GameProject\Directions.class</Jar>
+    <Jar>C:\Users\Kali Zurawski\documents\School\CIS350\CIS350Project\out\production\Project\GameProject\FusePanel$Countdown.class</Jar>
+    <Jar>C:\Users\Kali Zurawski\documents\School\CIS350\CIS350Project\out\production\Project\GameProject\FusePanel.class</Jar>
+    <Jar>C:\Users\Kali Zurawski\documents\School\CIS350\CIS350Project\out\production\Project\GameProject\MemoryBoard$1.class</Jar>
+    <Jar>C:\Users\Kali Zurawski\documents\School\CIS350\CIS350Project\out\production\Project\GameProject\MemoryBoard$2.class</Jar>
+    <Jar>C:\Users\Kali Zurawski\documents\School\CIS350\CIS350Project\out\production\Project\GameProject\MemoryBoard.class</Jar>
+    <Jar>C:\Users\Kali Zurawski\documents\School\CIS350\CIS350Project\out\production\Project\GameProject\MemoryCard.class</Jar>
+    <Jar>C:\Users\Kali Zurawski\documents\School\CIS350\CIS350Project\out\production\Project\GameProject\SpaceType.class</Jar>
+    <Jar>C:\Users\Kali Zurawski\documents\School\CIS350\CIS350Project\out\production\Project\GameProject\WarioWareGUI$1.class</Jar>
+    <Jar>C:\Users\Kali Zurawski\documents\School\CIS350\CIS350Project\out\production\Project\GameProject\WarioWareGUI$2.class</Jar>
+    <Jar>C:\Users\Kali Zurawski\documents\School\CIS350\CIS350Project\out\production\Project\GameProject\WarioWareGUI.class</Jar>
+    <AuxClasspathEntry>C:/Users/Kali Zurawski/documents/School/CIS350/CIS350Project/out/production/Project</AuxClasspathEntry>
+    <SrcDir>C:/Users/Kali Zurawski/documents/School/CIS350/CIS350Project/src</SrcDir>
+  </Project>
+  <BugInstance type="DM_EXIT" priority="2" rank="16" abbrev="Dm" category="BAD_PRACTICE" instanceHash="bc53b9cbad07887527588b2e855d0358" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="382">
+    <ShortMessage>Method invokes System.exit(...)</ShortMessage>
+    <LongMessage>GameProject.CollectPanel.keyTyped(KeyEvent) invokes System.exit(...), which shuts down the entire virtual machine</LongMessage>
+    <Class classname="GameProject.CollectPanel" primary="true">
+      <SourceLine classname="GameProject.CollectPanel" sourcefile="CollectPanel.java" sourcepath="GameProject/CollectPanel.java" relSourcepath="GameProject\CollectPanel.java">
+        <Message>In CollectPanel.java</Message>
+      </SourceLine>
+      <Message>In class GameProject.CollectPanel</Message>
+    </Class>
+    <Method classname="GameProject.CollectPanel" name="keyTyped" signature="(Ljava/awt/event/KeyEvent;)V" isStatic="false" primary="true">
+      <SourceLine classname="GameProject.CollectPanel" start="202" end="218" startBytecode="0" endBytecode="222" sourcefile="CollectPanel.java" sourcepath="GameProject/CollectPanel.java" relSourcepath="GameProject\CollectPanel.java"/>
+      <Message>In method GameProject.CollectPanel.keyTyped(KeyEvent)</Message>
+    </Method>
+    <SourceLine classname="GameProject.CollectPanel" primary="true" start="216" end="216" startBytecode="106" endBytecode="106" sourcefile="CollectPanel.java" sourcepath="GameProject/CollectPanel.java" relSourcepath="GameProject\CollectPanel.java">
+      <Message>At CollectPanel.java:[line 216]</Message>
+    </SourceLine>
+    <SourceLine classname="GameProject.CollectPanel" primary="true" start="216" end="216" startBytecode="106" endBytecode="106" sourcefile="CollectPanel.java" sourcepath="GameProject/CollectPanel.java" relSourcepath="GameProject\CollectPanel.java">
+      <Message>At CollectPanel.java:[line 216]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="DM_EXIT" priority="2" rank="16" abbrev="Dm" category="BAD_PRACTICE" instanceHash="66361c07a3f7b0046597b9bcd06405cc" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="382">
+    <ShortMessage>Method invokes System.exit(...)</ShortMessage>
+    <LongMessage>GameProject.MemoryBoard.checkCards() invokes System.exit(...), which shuts down the entire virtual machine</LongMessage>
+    <Class classname="GameProject.MemoryBoard" primary="true">
+      <SourceLine classname="GameProject.MemoryBoard" sourcefile="MemoryBoard.java" sourcepath="GameProject/MemoryBoard.java" relSourcepath="GameProject\MemoryBoard.java">
+        <Message>In MemoryBoard.java</Message>
+      </SourceLine>
+      <Message>In class GameProject.MemoryBoard</Message>
+    </Class>
+    <Method classname="GameProject.MemoryBoard" name="checkCards" signature="()V" isStatic="false" primary="true">
+      <SourceLine classname="GameProject.MemoryBoard" start="250" end="284" startBytecode="0" endBytecode="197" sourcefile="MemoryBoard.java" sourcepath="GameProject/MemoryBoard.java" relSourcepath="GameProject\MemoryBoard.java"/>
+      <Message>In method GameProject.MemoryBoard.checkCards()</Message>
+    </Method>
+    <SourceLine classname="GameProject.MemoryBoard" primary="true" start="267" end="267" startBytecode="63" endBytecode="63" sourcefile="MemoryBoard.java" sourcepath="GameProject/MemoryBoard.java" relSourcepath="GameProject\MemoryBoard.java">
+      <Message>At MemoryBoard.java:[line 267]</Message>
+    </SourceLine>
+    <SourceLine classname="GameProject.MemoryBoard" primary="true" start="267" end="267" startBytecode="63" endBytecode="63" sourcefile="MemoryBoard.java" sourcepath="GameProject/MemoryBoard.java" relSourcepath="GameProject\MemoryBoard.java">
+      <Message>At MemoryBoard.java:[line 267]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="1" rank="15" abbrev="DLS" category="STYLE" instanceHash="bffa1547d8d34d1b41411c879e3fe8a5" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="563">
+    <ShortMessage>Dead store to local variable</ShortMessage>
+    <LongMessage>Dead store to gui in GameProject.WarioWareGUI.main(String[])</LongMessage>
+    <Class classname="GameProject.WarioWareGUI" primary="true">
+      <SourceLine classname="GameProject.WarioWareGUI" sourcefile="WarioWareGUI.java" sourcepath="GameProject/WarioWareGUI.java" relSourcepath="GameProject\WarioWareGUI.java">
+        <Message>In WarioWareGUI.java</Message>
+      </SourceLine>
+      <Message>In class GameProject.WarioWareGUI</Message>
+    </Class>
+    <Method classname="GameProject.WarioWareGUI" name="main" signature="([Ljava/lang/String;)V" isStatic="true" primary="true">
+      <SourceLine classname="GameProject.WarioWareGUI" start="101" end="103" startBytecode="0" endBytecode="4" sourcefile="WarioWareGUI.java" sourcepath="GameProject/WarioWareGUI.java" relSourcepath="GameProject\WarioWareGUI.java"/>
+      <Message>In method GameProject.WarioWareGUI.main(String[])</Message>
+    </Method>
+    <LocalVariable name="gui" register="1" pc="8" role="LOCAL_VARIABLE_NAMED">
+      <Message>Local variable named gui</Message>
+    </LocalVariable>
+    <SourceLine classname="GameProject.WarioWareGUI" primary="true" start="101" end="101" startBytecode="7" endBytecode="7" sourcefile="WarioWareGUI.java" sourcepath="GameProject/WarioWareGUI.java" relSourcepath="GameProject\WarioWareGUI.java">
+      <Message>At WarioWareGUI.java:[line 101]</Message>
+    </SourceLine>
+    <SourceLine classname="GameProject.WarioWareGUI" primary="true" start="101" end="101" startBytecode="7" endBytecode="7" sourcefile="WarioWareGUI.java" sourcepath="GameProject/WarioWareGUI.java" relSourcepath="GameProject\WarioWareGUI.java">
+      <Message>At WarioWareGUI.java:[line 101]</Message>
+    </SourceLine>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.DEAD_OBJECT_STORE" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="gui"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+  </BugInstance>
+  <BugCategory category="BAD_PRACTICE">
+    <Description>Bad practice</Description>
+  </BugCategory>
+  <BugCategory category="STYLE">
+    <Description>Dodgy code</Description>
+  </BugCategory>
+  <BugPattern type="DLS_DEAD_LOCAL_STORE" abbrev="DLS" category="STYLE">
+    <ShortDescription>Dead store to local variable</ShortDescription>
+    <Details><![CDATA[
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because FindBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="DM_EXIT" abbrev="Dm" category="BAD_PRACTICE" cweid="382">
+    <ShortDescription>Method invokes System.exit(...)</ShortDescription>
+    <Details><![CDATA[
+
+  <p> Invoking System.exit shuts down the entire Java virtual machine. This
+   should only been done when it is appropriate. Such calls make it
+   hard or impossible for your code to be invoked by other code.
+   Consider throwing a RuntimeException instead.</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugCode abbrev="Dm">
+    <Description>Dubious method used</Description>
+  </BugCode>
+  <BugCode abbrev="DLS" cweid="563">
+    <Description>Dead local store</Description>
+  </BugCode>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Mon, 15 Jul 2019 00:49:40 -0400" total_classes="15" referenced_classes="371" total_bugs="3" total_size="611" num_packages="1" java_version="1.8.0_152-release" vm_version="25.152-b8" cpu_seconds="24.78" clock_seconds="351.05" peak_mbytes="551.63" alloc_mbytes="725.00" gc_seconds="0.26" priority_2="2" priority_1="1">
+    <FileStats path="GameProject/Collect.java" bugCount="0" size="105"/>
+    <FileStats path="GameProject/CollectPanel.java" bugCount="1" size="102" bugHash="a8c7085a3fee7467ce1e3202212205b1"/>
+    <FileStats path="GameProject/CollectPlayer.java" bugCount="0" size="56"/>
+    <FileStats path="GameProject/Directions.java" bugCount="0" size="13"/>
+    <FileStats path="GameProject/FusePanel.java" bugCount="0" size="90"/>
+    <FileStats path="GameProject/MemoryBoard.java" bugCount="1" size="153" bugHash="d17c62c4ea5a026462602d4df41e5153"/>
+    <FileStats path="GameProject/MemoryCard.java" bugCount="0" size="16"/>
+    <FileStats path="GameProject/SpaceType.java" bugCount="0" size="11"/>
+    <FileStats path="GameProject/WarioWareGUI.java" bugCount="1" size="65" bugHash="2dfd706a29cdd97df593627b7bec375d"/>
+    <PackageStats package="GameProject" total_bugs="3" total_types="15" total_size="611" priority_2="2" priority_1="1">
+      <ClassStats class="GameProject.Collect" sourceFile="Collect.java" interface="false" size="105" bugs="0"/>
+      <ClassStats class="GameProject.CollectPanel" sourceFile="CollectPanel.java" interface="false" size="98" bugs="1" priority_2="1"/>
+      <ClassStats class="GameProject.CollectPanel$1" sourceFile="CollectPanel.java" interface="false" size="4" bugs="0"/>
+      <ClassStats class="GameProject.CollectPlayer" sourceFile="CollectPlayer.java" interface="false" size="56" bugs="0"/>
+      <ClassStats class="GameProject.Directions" sourceFile="Directions.java" interface="false" size="13" bugs="0"/>
+      <ClassStats class="GameProject.FusePanel" sourceFile="FusePanel.java" interface="false" size="71" bugs="0"/>
+      <ClassStats class="GameProject.FusePanel$Countdown" sourceFile="FusePanel.java" interface="false" size="19" bugs="0"/>
+      <ClassStats class="GameProject.MemoryBoard" sourceFile="MemoryBoard.java" interface="false" size="137" bugs="1" priority_2="1"/>
+      <ClassStats class="GameProject.MemoryBoard$1" sourceFile="MemoryBoard.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="GameProject.MemoryBoard$2" sourceFile="MemoryBoard.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="GameProject.MemoryCard" sourceFile="MemoryCard.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="GameProject.SpaceType" sourceFile="SpaceType.java" interface="false" size="11" bugs="0"/>
+      <ClassStats class="GameProject.WarioWareGUI" sourceFile="WarioWareGUI.java" interface="false" size="47" bugs="1" priority_1="1"/>
+      <ClassStats class="GameProject.WarioWareGUI$1" sourceFile="WarioWareGUI.java" interface="false" size="9" bugs="0"/>
+      <ClassStats class="GameProject.WarioWareGUI$2" sourceFile="WarioWareGUI.java" interface="false" size="9" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="496" invocations="1611" avgMicrosecondsPerInvocation="308" maxMicrosecondsPerInvocation="61288" standardDeviationMircosecondsPerInvocation="2060"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="484" invocations="371" avgMicrosecondsPerInvocation="1304" maxMicrosecondsPerInvocation="152829" standardDeviationMircosecondsPerInvocation="8203"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="323" invocations="371" avgMicrosecondsPerInvocation="872" maxMicrosecondsPerInvocation="26520" standardDeviationMircosecondsPerInvocation="2360"/>
+      <ClassProfile name="edu.umd.cs.findbugs.FindBugs2" totalMilliseconds="232" invocations="2" avgMicrosecondsPerInvocation="116407" maxMicrosecondsPerInvocation="160666" standardDeviationMircosecondsPerInvocation="44259"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="193" invocations="828" avgMicrosecondsPerInvocation="233" maxMicrosecondsPerInvocation="25733" standardDeviationMircosecondsPerInvocation="1029"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="182" invocations="1613" avgMicrosecondsPerInvocation="113" maxMicrosecondsPerInvocation="13778" standardDeviationMircosecondsPerInvocation="530"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="125" invocations="371" avgMicrosecondsPerInvocation="337" maxMicrosecondsPerInvocation="45373" standardDeviationMircosecondsPerInvocation="2398"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="95" invocations="371" avgMicrosecondsPerInvocation="256" maxMicrosecondsPerInvocation="34906" standardDeviationMircosecondsPerInvocation="1872"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="79" invocations="371" avgMicrosecondsPerInvocation="214" maxMicrosecondsPerInvocation="20182" standardDeviationMircosecondsPerInvocation="1585"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="70" invocations="371" avgMicrosecondsPerInvocation="190" maxMicrosecondsPerInvocation="10112" standardDeviationMircosecondsPerInvocation="664"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="68" invocations="436" avgMicrosecondsPerInvocation="156" maxMicrosecondsPerInvocation="9585" standardDeviationMircosecondsPerInvocation="513"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="66" invocations="83" avgMicrosecondsPerInvocation="801" maxMicrosecondsPerInvocation="17080" standardDeviationMircosecondsPerInvocation="2295"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ReflectiveClasses" totalMilliseconds="63" invocations="371" avgMicrosecondsPerInvocation="170" maxMicrosecondsPerInvocation="30749" standardDeviationMircosecondsPerInvocation="1618"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="54" invocations="371" avgMicrosecondsPerInvocation="147" maxMicrosecondsPerInvocation="9386" standardDeviationMircosecondsPerInvocation="558"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

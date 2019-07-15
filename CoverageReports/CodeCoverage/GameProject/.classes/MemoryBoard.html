@@ -1,0 +1,473 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: MemoryBoard</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">GameProject</a> ]
+</div>
+
+<h1>Coverage Summary for Class: MemoryBoard (GameProject)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MemoryBoard</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    97.4%
+  </span>
+  <span class="absValue">
+    (112/ 115)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">MemoryBoard$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">MemoryBoard$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/ 3)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/ 10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    97.5%
+  </span>
+  <span class="absValue">
+    (119/ 122)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;/*****************************************************************
+<i>2</i>&nbsp;Operates the GUI of the memory match game
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;@author Robert Gardner
+<i>5</i>&nbsp;@Coauthor Kali Zurawski
+<i>6</i>&nbsp;@version 1.0
+<i>7</i>&nbsp; *****************************************************************/
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;package GameProject;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;import javax.swing.ImageIcon;
+<i>12</i>&nbsp;import javax.swing.JFrame;
+<i>13</i>&nbsp;import javax.swing.JOptionPane;
+<i>14</i>&nbsp;import javax.swing.Timer;
+<i>15</i>&nbsp;import java.awt.*;
+<i>16</i>&nbsp;import java.awt.event.*;
+<i>17</i>&nbsp;import java.util.ArrayList;
+<i>18</i>&nbsp;import java.util.List;
+<i>19</i>&nbsp;import java.util.Collections;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;@SuppressWarnings(&quot;serial&quot;)
+<b class="fc"><i>22</i>&nbsp;public class MemoryBoard extends JFrame{</b>
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;	/** vector of cards **/
+<i>25</i>&nbsp;	private List&lt;MemoryCard&gt; cards;
+<i>26</i>&nbsp;	
+<i>27</i>&nbsp;	/** card currently selected by user **/
+<i>28</i>&nbsp;	private MemoryCard selectedCard;
+<i>29</i>&nbsp;	
+<i>30</i>&nbsp;	/** card 1 object **/
+<i>31</i>&nbsp;	private MemoryCard c1;
+<i>32</i>&nbsp;	
+<i>33</i>&nbsp;	/** card 2 object **/
+<i>34</i>&nbsp;	private MemoryCard c2;
+<i>35</i>&nbsp;	
+<i>36</i>&nbsp;	/** timer object **/
+<i>37</i>&nbsp;	private Timer t;
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;	/** Boo Image **/
+<i>40</i>&nbsp;	private ImageIcon Boo;
+<i>41</i>&nbsp;	
+<i>42</i>&nbsp;	/** Bowser Image **/
+<i>43</i>&nbsp;	private ImageIcon Bowser;
+<i>44</i>&nbsp;	
+<i>45</i>&nbsp;	/** Dry Bones Image **/
+<i>46</i>&nbsp;	private ImageIcon DryBones;
+<i>47</i>&nbsp;	
+<i>48</i>&nbsp;	/** Goomba Image **/
+<i>49</i>&nbsp;	private ImageIcon Goomba;
+<i>50</i>&nbsp;	
+<i>51</i>&nbsp;	/** Koopa Image **/
+<i>52</i>&nbsp;	private ImageIcon Koopa;
+<i>53</i>&nbsp;	
+<i>54</i>&nbsp;	/** Mushroom  Image **/
+<i>55</i>&nbsp;	private ImageIcon Mushroom;
+<i>56</i>&nbsp;	
+<i>57</i>&nbsp;	/** Shy Guy Image **/
+<i>58</i>&nbsp;	private ImageIcon ShyGuy;
+<i>59</i>&nbsp;	
+<i>60</i>&nbsp;	/** Toad Image **/
+<i>61</i>&nbsp;	private ImageIcon Toad;
+<i>62</i>&nbsp;	
+<i>63</i>&nbsp;	/** Wario Image **/
+<i>64</i>&nbsp;	private ImageIcon Wario;
+<i>65</i>&nbsp;	
+<i>66</i>&nbsp;	/** Yoshi Image **/
+<i>67</i>&nbsp;	private ImageIcon Yoshi;
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;	
+<i>70</i>&nbsp;	/******************************************************************
+<i>71</i>&nbsp;	 * Calls for initialization of icons, prepares the frame for the 
+<i>72</i>&nbsp;	 * GUI, and places the buttons in the frame. 
+<i>73</i>&nbsp;	 *****************************************************************/
+<i>74</i>&nbsp;	
+<b class="fc"><i>75</i>&nbsp;	public MemoryBoard(){</b>
+<i>76</i>&nbsp;
+<i>77</i>&nbsp;		//Initializes all icons
+<b class="fc"><i>78</i>&nbsp;		initIcons();</b>
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;		//sets the number of matching cards
+<b class="fc"><i>81</i>&nbsp;		int pairs = 10;</b>
+<i>82</i>&nbsp;		
+<i>83</i>&nbsp;		//creates a vector of Memorycard objects
+<b class="fc"><i>84</i>&nbsp;		List&lt;MemoryCard&gt; cardsList = new ArrayList&lt;MemoryCard&gt;();</b>
+<i>85</i>&nbsp;		
+<i>86</i>&nbsp;		//creates a vector of integers 
+<b class="fc"><i>87</i>&nbsp;		List&lt;Integer&gt; cardVals = new ArrayList&lt;Integer&gt;();</b>
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;		//adds the values to the vector of card values for the 
+<i>90</i>&nbsp;		//corresponding number of pairs
+<b class="fc"><i>91</i>&nbsp;		for (int i = 0; i &lt; pairs; i++){</b>
+<b class="fc"><i>92</i>&nbsp;			cardVals.add(i);</b>
+<b class="fc"><i>93</i>&nbsp;			cardVals.add(i);</b>
+<i>94</i>&nbsp;		}
+<i>95</i>&nbsp;		
+<i>96</i>&nbsp;		//randomizes the values assigned to each card
+<b class="fc"><i>97</i>&nbsp;		Collections.shuffle(cardVals);</b>
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;		//creates the cards and assigns them each a value from the
+<i>100</i>&nbsp;		//cardVals vector of values
+<b class="fc"><i>101</i>&nbsp;		for (int val : cardVals){</b>
+<i>102</i>&nbsp;			
+<i>103</i>&nbsp;			//instantiates the new memoryCard object
+<b class="fc"><i>104</i>&nbsp;			MemoryCard c = new MemoryCard();</b>
+<i>105</i>&nbsp;			
+<i>106</i>&nbsp;			//assigns the memorycard a value
+<b class="fc"><i>107</i>&nbsp;			c.setId(val);</b>
+<i>108</i>&nbsp;			
+<i>109</i>&nbsp;			//allows the card to be clicked by the user
+<b class="fc"><i>110</i>&nbsp;			c.addActionListener(new ActionListener(){</b>
+<i>111</i>&nbsp;				public void actionPerformed(ActionEvent ae){
+<i>112</i>&nbsp;					
+<i>113</i>&nbsp;					// sets the card selected as the current card
+<b class="fc"><i>114</i>&nbsp;					selectedCard = c;</b>
+<i>115</i>&nbsp;					
+<i>116</i>&nbsp;					// handles displaying proper images
+<b class="fc"><i>117</i>&nbsp;					doTurn();</b>
+<b class="fc"><i>118</i>&nbsp;				}</b>
+<i>119</i>&nbsp;			});
+<b class="fc"><i>120</i>&nbsp;			cardsList.add(c);</b>
+<b class="fc"><i>121</i>&nbsp;		}</b>
+<b class="fc"><i>122</i>&nbsp;		this.cards = cardsList;</b>
+<i>123</i>&nbsp;
+<i>124</i>&nbsp;		//instantiates the timer
+<b class="fc"><i>125</i>&nbsp;		t = new Timer(500, new ActionListener(){</b>
+<i>126</i>&nbsp;			public void actionPerformed(ActionEvent ae){
+<i>127</i>&nbsp;				
+<i>128</i>&nbsp;				//checks match conditions 
+<b class="fc"><i>129</i>&nbsp;				checkCards();</b>
+<i>130</i>&nbsp;			
+<b class="fc"><i>131</i>&nbsp;			}</b>
+<i>132</i>&nbsp;		});
+<i>133</i>&nbsp;
+<i>134</i>&nbsp;		//prevents multiple timers from being active simultaneously
+<b class="fc"><i>135</i>&nbsp;		t.setRepeats(false);</b>
+<i>136</i>&nbsp;
+<i>137</i>&nbsp;		//sets parameters for the GUI and the card grid
+<b class="fc"><i>138</i>&nbsp;		Container pane = getContentPane();</b>
+<b class="fc"><i>139</i>&nbsp;		pane.setLayout(new GridLayout(4, 5));</b>
+<b class="fc"><i>140</i>&nbsp;		for (MemoryCard c : cards){</b>
+<b class="fc"><i>141</i>&nbsp;			pane.add(c);</b>
+<b class="fc"><i>142</i>&nbsp;		}</b>
+<b class="fc"><i>143</i>&nbsp;		setTitle(&quot;Memory Match&quot;);</b>
+<b class="fc"><i>144</i>&nbsp;	}</b>
+<i>145</i>&nbsp;
+<i>146</i>&nbsp;	/******************************************************************
+<i>147</i>&nbsp;	 * Handles the visual aspect of selecting each card
+<i>148</i>&nbsp;	 *****************************************************************/
+<i>149</i>&nbsp;	public void doTurn(){
+<i>150</i>&nbsp;		
+<i>151</i>&nbsp;		//when the first card is selected
+<b class="fc"><i>152</i>&nbsp;		if (c1 == null &amp;&amp; c2 == null){</b>
+<i>153</i>&nbsp;			
+<i>154</i>&nbsp;			//set the first card selected as the active card
+<b class="fc"><i>155</i>&nbsp;			c1 = selectedCard;</b>
+<i>156</i>&nbsp;			
+<i>157</i>&nbsp;			//display the icon corresponding to the card ID
+<b class="fc"><i>158</i>&nbsp;			switch(c1.getId())</b>
+<i>159</i>&nbsp;			{
+<i>160</i>&nbsp;
+<b class="fc"><i>161</i>&nbsp;			case 0 : c1.setIcon(ShyGuy);</b>
+<b class="fc"><i>162</i>&nbsp;			break;</b>
+<i>163</i>&nbsp;
+<b class="fc"><i>164</i>&nbsp;			case 1 : c1.setIcon(Boo);</b>
+<b class="fc"><i>165</i>&nbsp;			break;</b>
+<i>166</i>&nbsp;
+<b class="fc"><i>167</i>&nbsp;			case 2 : c1.setIcon(Bowser);</b>
+<b class="fc"><i>168</i>&nbsp;			break;</b>
+<i>169</i>&nbsp;
+<b class="fc"><i>170</i>&nbsp;			case 3 : c1.setIcon(DryBones);</b>
+<b class="fc"><i>171</i>&nbsp;			break;</b>
+<i>172</i>&nbsp;
+<b class="fc"><i>173</i>&nbsp;			case 4 : c1.setIcon(Goomba);</b>
+<b class="fc"><i>174</i>&nbsp;			break;</b>
+<i>175</i>&nbsp;
+<b class="fc"><i>176</i>&nbsp;			case 5 : c1.setIcon(Koopa);</b>
+<b class="fc"><i>177</i>&nbsp;			break;</b>
+<i>178</i>&nbsp;
+<b class="fc"><i>179</i>&nbsp;			case 6 : c1.setIcon(Mushroom);</b>
+<b class="fc"><i>180</i>&nbsp;			break;</b>
+<i>181</i>&nbsp;
+<b class="fc"><i>182</i>&nbsp;			case 7 : c1.setIcon(Toad);</b>
+<b class="fc"><i>183</i>&nbsp;			break;</b>
+<i>184</i>&nbsp;
+<b class="fc"><i>185</i>&nbsp;			case 8 : c1.setIcon(Wario);</b>
+<b class="fc"><i>186</i>&nbsp;			break;</b>
+<i>187</i>&nbsp;
+<b class="fc"><i>188</i>&nbsp;			case 9 : c1.setIcon(Yoshi);</b>
+<b class="fc"><i>189</i>&nbsp;			break;</b>
+<i>190</i>&nbsp;
+<b class="nc"><i>191</i>&nbsp;			default : System.out.println(&quot;This should never happen&quot;);</b>
+<i>192</i>&nbsp;
+<i>193</i>&nbsp;			}
+<i>194</i>&nbsp;		}
+<i>195</i>&nbsp;
+<i>196</i>&nbsp;		//when the second card is selected
+<b class="fc"><i>197</i>&nbsp;		if (c1 != null &amp;&amp; c1 != selectedCard &amp;&amp; c2 == null){</b>
+<i>198</i>&nbsp;			
+<i>199</i>&nbsp;			//set second card as the active card
+<b class="fc"><i>200</i>&nbsp;			c2 = selectedCard;</b>
+<i>201</i>&nbsp;
+<i>202</i>&nbsp;			//display the icon corresponding to the card ID
+<b class="fc"><i>203</i>&nbsp;			switch(c2.getId())</b>
+<i>204</i>&nbsp;			{
+<i>205</i>&nbsp;
+<b class="fc"><i>206</i>&nbsp;			case 0 : c2.setIcon(ShyGuy);</b>
+<b class="fc"><i>207</i>&nbsp;			break;</b>
+<i>208</i>&nbsp;
+<b class="fc"><i>209</i>&nbsp;			case 1 : c2.setIcon(Boo);</b>
+<b class="fc"><i>210</i>&nbsp;			break;</b>
+<i>211</i>&nbsp;
+<b class="fc"><i>212</i>&nbsp;			case 2 : c2.setIcon(Bowser);</b>
+<b class="fc"><i>213</i>&nbsp;			break;</b>
+<i>214</i>&nbsp;
+<b class="fc"><i>215</i>&nbsp;			case 3 : c2.setIcon(DryBones);</b>
+<b class="fc"><i>216</i>&nbsp;			break;</b>
+<i>217</i>&nbsp;
+<b class="fc"><i>218</i>&nbsp;			case 4 : c2.setIcon(Goomba);</b>
+<b class="fc"><i>219</i>&nbsp;			break;</b>
+<i>220</i>&nbsp;
+<b class="fc"><i>221</i>&nbsp;			case 5 : c2.setIcon(Koopa);</b>
+<b class="fc"><i>222</i>&nbsp;			break;</b>
+<i>223</i>&nbsp;
+<b class="fc"><i>224</i>&nbsp;			case 6 : c2.setIcon(Mushroom);</b>
+<b class="fc"><i>225</i>&nbsp;			break;</b>
+<i>226</i>&nbsp;
+<b class="fc"><i>227</i>&nbsp;			case 7 : c2.setIcon(Toad);</b>
+<b class="fc"><i>228</i>&nbsp;			break;</b>
+<i>229</i>&nbsp;
+<b class="fc"><i>230</i>&nbsp;			case 8 : c2.setIcon(Wario);</b>
+<b class="fc"><i>231</i>&nbsp;			break;</b>
+<i>232</i>&nbsp;
+<b class="fc"><i>233</i>&nbsp;			case 9 : c2.setIcon(Yoshi);</b>
+<b class="fc"><i>234</i>&nbsp;			break;</b>
+<i>235</i>&nbsp;
+<b class="nc"><i>236</i>&nbsp;			default : System.out.println(&quot;This should never happen&quot;);</b>
+<i>237</i>&nbsp;
+<i>238</i>&nbsp;			}
+<i>239</i>&nbsp;
+<i>240</i>&nbsp;			//starts the timer after selecting the card
+<b class="fc"><i>241</i>&nbsp;			t.start();</b>
+<i>242</i>&nbsp;
+<i>243</i>&nbsp;		}
+<b class="fc"><i>244</i>&nbsp;	}</b>
+<i>245</i>&nbsp;
+<i>246</i>&nbsp;	/******************************************************************
+<i>247</i>&nbsp;	 * Checks if the two cards selected by the user match
+<i>248</i>&nbsp;	 *****************************************************************/
+<i>249</i>&nbsp;	public void checkCards(){
+<b class="fc"><i>250</i>&nbsp;		if (c1.getId() == c2.getId()){//match condition</b>
+<i>251</i>&nbsp;			
+<i>252</i>&nbsp;			//disables the cards
+<b class="fc"><i>253</i>&nbsp;			c1.setEnabled(false); </b>
+<b class="fc"><i>254</i>&nbsp;			c2.setEnabled(false);</b>
+<i>255</i>&nbsp;			
+<i>256</i>&nbsp;			//flags the cards as having been matched
+<b class="fc"><i>257</i>&nbsp;			c1.setMatched(true); </b>
+<b class="fc"><i>258</i>&nbsp;			c2.setMatched(true);</b>
+<i>259</i>&nbsp;			
+<i>260</i>&nbsp;			//checks if the game has been won
+<b class="fc"><i>261</i>&nbsp;			if (this.isGameWon()){</b>
+<i>262</i>&nbsp;				
+<i>263</i>&nbsp;				//displays the dialog box indicating victory
+<b class="fc"><i>264</i>&nbsp;				JOptionPane.showMessageDialog(this, &quot;You win!&quot;);</b>
+<i>265</i>&nbsp;				
+<i>266</i>&nbsp;				//terminate the program upon acknowledgement of victory
+<b class="nc"><i>267</i>&nbsp;				System.exit(0);</b>
+<i>268</i>&nbsp;			}
+<i>269</i>&nbsp;		}
+<i>270</i>&nbsp;
+<i>271</i>&nbsp;		//if the cards don&#39;t match
+<i>272</i>&nbsp;		else{
+<i>273</i>&nbsp;			
+<i>274</i>&nbsp;			//&#39;hides&#39; icons
+<b class="fc"><i>275</i>&nbsp;			c1.setIcon(null); </b>
+<b class="fc"><i>276</i>&nbsp;			c2.setIcon(null);</b>
+<i>277</i>&nbsp;			
+<i>278</i>&nbsp;		}
+<i>279</i>&nbsp;		
+<i>280</i>&nbsp;		//reset c1 and c2
+<b class="fc"><i>281</i>&nbsp;		c1 = null; </b>
+<b class="fc"><i>282</i>&nbsp;		c2 = null;</b>
+<i>283</i>&nbsp;
+<b class="fc"><i>284</i>&nbsp;	}</b>
+<i>285</i>&nbsp;
+<i>286</i>&nbsp;	/******************************************************************
+<i>287</i>&nbsp;	 * Checks if all of the cards have been matched
+<i>288</i>&nbsp;	 *****************************************************************/	
+<i>289</i>&nbsp;	public boolean isGameWon(){
+<b class="fc"><i>290</i>&nbsp;		for(MemoryCard c: this.cards){</b>
+<b class="fc"><i>291</i>&nbsp;			if (c.getMatched() == false){</b>
+<b class="fc"><i>292</i>&nbsp;				return false;</b>
+<i>293</i>&nbsp;			}
+<b class="fc"><i>294</i>&nbsp;		}</b>
+<b class="fc"><i>295</i>&nbsp;		return true;</b>
+<i>296</i>&nbsp;	}
+<i>297</i>&nbsp;
+<i>298</i>&nbsp;	/******************************************************************
+<i>299</i>&nbsp;	 * Initializes all icons
+<i>300</i>&nbsp;	 *****************************************************************/
+<i>301</i>&nbsp;	private void initIcons() {
+<i>302</i>&nbsp;
+<b class="fc"><i>303</i>&nbsp;		ShyGuy = new ImageIcon(new ImageIcon(&quot;ShyGuy.png&quot;).getImage()</b>
+<b class="fc"><i>304</i>&nbsp;				.getScaledInstance(100, 100,</b>
+<i>305</i>&nbsp;						Image.SCALE_DEFAULT));
+<i>306</i>&nbsp;
+<b class="fc"><i>307</i>&nbsp;		Boo = new ImageIcon(new ImageIcon(&quot;Boo.png&quot;).getImage()</b>
+<b class="fc"><i>308</i>&nbsp;				.getScaledInstance(100, 100,</b>
+<i>309</i>&nbsp;						Image.SCALE_DEFAULT));
+<i>310</i>&nbsp;
+<b class="fc"><i>311</i>&nbsp;		Bowser = new ImageIcon(new ImageIcon(&quot;Bowser.png&quot;).getImage()</b>
+<b class="fc"><i>312</i>&nbsp;				.getScaledInstance(100, 100,</b>
+<i>313</i>&nbsp;						Image.SCALE_DEFAULT));
+<i>314</i>&nbsp;
+<b class="fc"><i>315</i>&nbsp;		DryBones = new ImageIcon(new ImageIcon(&quot;DryBones.png&quot;).getImage()</b>
+<b class="fc"><i>316</i>&nbsp;				.getScaledInstance(100, 100,</b>
+<i>317</i>&nbsp;						Image.SCALE_DEFAULT));
+<i>318</i>&nbsp;
+<b class="fc"><i>319</i>&nbsp;		Goomba = new ImageIcon(new ImageIcon(&quot;Goomba.png&quot;).getImage()</b>
+<b class="fc"><i>320</i>&nbsp;				.getScaledInstance(100, 100,</b>
+<i>321</i>&nbsp;						Image.SCALE_DEFAULT));
+<i>322</i>&nbsp;
+<b class="fc"><i>323</i>&nbsp;		Koopa = new ImageIcon(new ImageIcon(&quot;Koopa.png&quot;).getImage()</b>
+<b class="fc"><i>324</i>&nbsp;				.getScaledInstance(100, 100,</b>
+<i>325</i>&nbsp;						Image.SCALE_DEFAULT));
+<i>326</i>&nbsp;
+<b class="fc"><i>327</i>&nbsp;		Mushroom = new ImageIcon(new ImageIcon(&quot;Mushroom.png&quot;).getImage()</b>
+<b class="fc"><i>328</i>&nbsp;				.getScaledInstance(100, 100,</b>
+<i>329</i>&nbsp;						Image.SCALE_DEFAULT));
+<i>330</i>&nbsp;
+<b class="fc"><i>331</i>&nbsp;		Toad = new ImageIcon(new ImageIcon(&quot;Toad.png&quot;).getImage()</b>
+<b class="fc"><i>332</i>&nbsp;				.getScaledInstance(100, 100,</b>
+<i>333</i>&nbsp;						Image.SCALE_DEFAULT));
+<i>334</i>&nbsp;
+<b class="fc"><i>335</i>&nbsp;		Wario = new ImageIcon(new ImageIcon(&quot;WarioIcon.png&quot;).getImage()</b>
+<b class="fc"><i>336</i>&nbsp;				.getScaledInstance(100, 100,</b>
+<i>337</i>&nbsp;						Image.SCALE_DEFAULT));
+<i>338</i>&nbsp;
+<b class="fc"><i>339</i>&nbsp;		Yoshi = new ImageIcon(new ImageIcon(&quot;Yoshi.png&quot;).getImage()</b>
+<b class="fc"><i>340</i>&nbsp;				.getScaledInstance(100, 100,</b>
+<i>341</i>&nbsp;						Image.SCALE_DEFAULT));
+<i>342</i>&nbsp;
+<b class="fc"><i>343</i>&nbsp;	}</b>
+<i>344</i>&nbsp;
+<i>345</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-07-15 00:15</div>
+</div>
+</body>
+</html>

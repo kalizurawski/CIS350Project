@@ -32,18 +32,18 @@ public class MemoryTest {
 						if (b.isGameWon())
 							break;
 
-						Thread.sleep(300);
+						Thread.sleep(2);
 						bot.mouseMove(100+(k*100),100+(l*125));
-						Thread.sleep(125);
+						Thread.sleep(2);
 						bot.mousePress(InputEvent.BUTTON1_MASK);
-						Thread.sleep(125);
+						Thread.sleep(2);
 						bot.mouseRelease(InputEvent.BUTTON1_MASK);
 
-						Thread.sleep(125);
+						Thread.sleep(2);
 						bot.mouseMove(100+(j*100),100+(i*125));
-						Thread.sleep(125);
+						Thread.sleep(2);
 						bot.mousePress(InputEvent.BUTTON1_MASK);
-						Thread.sleep(125);
+						Thread.sleep(2);
 						bot.mouseRelease(InputEvent.BUTTON1_MASK);
 
 					}

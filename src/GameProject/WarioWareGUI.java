@@ -15,6 +15,8 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.Timer;
+import javax.swing.WindowConstants;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -49,6 +51,10 @@ public class WarioWareGUI extends JFrame {
 
     /** Y coordinate where the coin game button will be placed. **/
     private static final int COIN_BUTTON_Y = 50;
+    
+    private static final int BALL_BUTTON_X = 50;
+    
+    private static final int BALL_BUTTON_Y = 250;
 
     /** X coordinate where the memory game button will be placed. **/
     private static final int MEMORY_BUTTON_X = 50;
@@ -124,6 +130,28 @@ public class WarioWareGUI extends JFrame {
                 launchMemory();
                 }
             });
+        
+      //Makes the button for the ball game
+        JButton ballSelect = new JButton("BALL GAME");
+        ballSelect.setBounds(BALL_BUTTON_X, BALL_BUTTON_Y,
+                BUTTON_WIDTH, BUTTON_HEIGHT);
+
+        //places the button on the GUI frame
+        guiFrame.add(ballSelect);
+        ballSelect.setVisible(true);
+
+        //enables the button to launch the coin collector game
+        ballSelect.addActionListener(new ActionListener() {
+            public void actionPerformed(final ActionEvent e) {
+
+                //closes the GUI
+                guiFrame.dispose();
+
+                //launches the coin collector game and its GUI
+                launchBall();
+
+                }
+            });
 
         //repaints the GUI to ensure it is layered properly
         guiFrame.repaint();
@@ -181,6 +209,25 @@ public class WarioWareGUI extends JFrame {
         b.setVisible(true);
 
         }
+    
+    public void launchBall() {
+    	
+    	final int delay = 20;
+    	
+        JFrame wind = new JFrame("RedBall/GamePinfo");
+        BallGame g = new BallGame();
+        wind.add(g);
+        wind.pack();
+        wind.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        wind.setLocationRelativeTo(null);
+        wind.setVisible(true);
+        wind.addMouseMotionListener(g);
+
+        Timer tt = new Timer(delay, g);
+        tt.start();   
+    	
+    }
+
 
     /***********************************************
      * Initializes all image icons.

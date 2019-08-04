@@ -15,7 +15,6 @@ import javax.swing.Timer;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
-import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
@@ -42,7 +41,8 @@ public class MemoryBoard extends JFrame {
 
     /** timer object. **/
     private Timer t;
-    
+
+    /** game timer. **/
     private Timer gameTimer;
 
     /** Boo Image. **/
@@ -74,11 +74,14 @@ public class MemoryBoard extends JFrame {
 
     /** Yoshi Image. **/
     private ImageIcon yoshi;
-    
+
+    /** counter for round number. **/
     private static int round = 1;
-    
-    private static int timeRemaining = 120; //change this bakc to two minutes LATER
-    
+
+    /** remaining time for game. **/
+    private static int timeRemaining = 120;
+
+    /** initial time for game. **/
     private static int timeInitial = 120;
     
     private static final int SECOND = 1000;

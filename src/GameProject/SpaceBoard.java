@@ -1,6 +1,13 @@
 package GameProject;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.Graphics;
+import java.awt.Toolkit;
+import java.awt.Font;
+import java.awt.FontMetrics;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -74,7 +81,9 @@ public class SpaceBoard extends JPanel implements Runnable, SpaceCommons {
 
         for (int i = 0; i < ALIEN_ROWS; i++) {
             for (int j = 0; j < ALIEN_COLS; j++) {
-                Aliens alien = new Aliens(ALIEN_INIT_X + SPACE_BETWEEN_ALIENS * j, ALIEN_INIT_Y + SPACE_BETWEEN_ALIENS * i);
+                Aliens alien = new Aliens(
+                        ALIEN_INIT_X + SPACE_BETWEEN_ALIENS * j,
+                        ALIEN_INIT_Y + SPACE_BETWEEN_ALIENS * i);
                 aliens.add(alien);
             }
         }
@@ -93,7 +102,7 @@ public class SpaceBoard extends JPanel implements Runnable, SpaceCommons {
      * Draws aliens.
      * @param g graphics parameter
      **********************************************/
-    public void drawAliens(Graphics g) {
+    public void drawAliens(final Graphics g) {
 
         for (Aliens alien: aliens) {
 
@@ -111,7 +120,7 @@ public class SpaceBoard extends JPanel implements Runnable, SpaceCommons {
      * Draws player.
      * @param g graphics parameter
      **********************************************/
-    public void drawPlayer(Graphics g) {
+    public void drawPlayer(final Graphics g) {
 
         if (player.isVisible()) {
             g.drawImage(player.getImage(), player.getX(), player.getY(), this);
@@ -137,7 +146,7 @@ public class SpaceBoard extends JPanel implements Runnable, SpaceCommons {
      * Draws shots.
      * @param g graphics parameter
      **********************************************/
-    public void drawShot(Graphics g) {
+    public void drawShot(final Graphics g) {
 
         if (shot.isVisible()) {
             g.drawImage(shot.getImage(), shot.getX(), shot.getY(), this);
@@ -148,7 +157,7 @@ public class SpaceBoard extends JPanel implements Runnable, SpaceCommons {
      * Draws bombs/explosions.
      * @param g graphics parameter
      **********************************************/
-    public void drawBombing(Graphics g) {
+    public void drawBombing(final Graphics g) {
         // for each alien
         for (Aliens a : aliens) {
             Aliens.Bomb b = a.getBomb();
@@ -181,7 +190,9 @@ public class SpaceBoard extends JPanel implements Runnable, SpaceCommons {
         g.dispose();
     }
 
-
+    /***********************************************
+     * Draws game over screen.
+     **********************************************/
     public void gameOver() {
 
         Graphics g = this.getGraphics();
@@ -190,11 +201,13 @@ public class SpaceBoard extends JPanel implements Runnable, SpaceCommons {
         g.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
 
         g.setColor(new Color(0, 32, 48));
-        g.fillRect(50, BOARD_WIDTH / 2 - 30, BOARD_WIDTH - 100, 50);
+        g.fillRect(BOARD_METRIC, BOARD_WIDTH / 2 - 30,
+                BOARD_WIDTH - (BOARD_METRIC * 2), BOARD_METRIC);
         g.setColor(Color.white);
-        g.drawRect(50, BOARD_WIDTH / 2 - 30, BOARD_WIDTH - 100, 50);
+        g.drawRect(BOARD_METRIC, BOARD_WIDTH / 2 - 30,
+                BOARD_WIDTH - (BOARD_METRIC * 2), BOARD_METRIC);
 
-        Font small = new Font("Helvetica", Font.BOLD, 14);
+        Font small = new Font("Helvetica", Font.BOLD, FONT_SIZE);
         FontMetrics metr = this.getFontMetrics(small);
 
         g.setColor(Color.white);
@@ -204,7 +217,7 @@ public class SpaceBoard extends JPanel implements Runnable, SpaceCommons {
     }
 
     /***********************************************
-     * Cycles animations
+     * Cycles animations.
      **********************************************/
     public void animationCycle() {
 
@@ -233,7 +246,8 @@ public class SpaceBoard extends JPanel implements Runnable, SpaceCommons {
                             && shotX <= (alienX + ALIEN_WIDTH)
                             && shotY >= (alienY)
                             && shotY <= (alienY + ALIEN_HEIGHT)) {
-                        ImageIcon ii = new ImageIcon(new ImageIcon(expImg).getImage()
+                        ImageIcon ii = new ImageIcon(new
+                                ImageIcon(expImg).getImage()
                                 .getScaledInstance(EXP_WIDTH, EXP_HEIGHT,
                                         Image.SCALE_DEFAULT));
                         alien.setImage(ii.getImage());
@@ -296,10 +310,10 @@ public class SpaceBoard extends JPanel implements Runnable, SpaceCommons {
 
         for (Aliens alien: aliens) {
 
-            int shot = generator.nextInt(CHANCE);
+            int ch = generator.nextInt(CHANCE);
             Aliens.Bomb b = alien.getBomb();
 
-            if (shot == 1 && alien.isVisible() && b.isDestroyed()) {
+            if (ch == 1 && alien.isVisible() && b.isDestroyed()) {
 
                 b.setDestroyed(false);
                 b.setX(alien.getX());
@@ -316,8 +330,10 @@ public class SpaceBoard extends JPanel implements Runnable, SpaceCommons {
                         && bombX <= (playerX + PLAYER_WIDTH)
                         && bombY <= (playerY)
                         && bombY >= (playerY - PLAYER_HEIGHT)) {
-                    ImageIcon ii = new ImageIcon(new ImageIcon(expImg).getImage()
-                            .getScaledInstance(PLAYER_WIDTH, PLAYER_HEIGHT, Image.SCALE_DEFAULT));
+                    ImageIcon ii = new ImageIcon(new
+                            ImageIcon(expImg).getImage()
+                            .getScaledInstance(PLAYER_WIDTH,
+                                    PLAYER_HEIGHT, Image.SCALE_DEFAULT));
                     player.setImage(ii.getImage());
                     player.setDying(true);
                     b.setDestroyed(true);
@@ -338,7 +354,9 @@ public class SpaceBoard extends JPanel implements Runnable, SpaceCommons {
     @Override
     public void run() {
 
-        long beforeTime, timeDiff, sleep;
+        long beforeTime;
+        long timeDiff;
+        long sleep;
 
         beforeTime = System.currentTimeMillis();
 
@@ -369,13 +387,13 @@ public class SpaceBoard extends JPanel implements Runnable, SpaceCommons {
     private class TAdapter extends KeyAdapter {
 
         @Override
-        public void keyReleased(KeyEvent e) {
+        public void keyReleased(final KeyEvent e) {
 
             player.keyReleased(e);
         }
 
         @Override
-        public void keyPressed(KeyEvent e) {
+        public void keyPressed(final KeyEvent e) {
 
             player.keyPressed(e);
 

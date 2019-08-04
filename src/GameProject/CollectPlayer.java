@@ -110,7 +110,7 @@ public class CollectPlayer {
     }
 
     /***********************************************
-     * Gets the current y location of the player
+     * Gets the current y location of the player.
      *
      * @return player's current y location
      **********************************************/

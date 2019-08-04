@@ -6,6 +6,10 @@ public interface SpaceCommons {
     int BOARD_WIDTH = 500;
     /** board height. **/
     int BOARD_HEIGHT = 500;
+    /** board metric. **/
+    int BOARD_METRIC = 50;
+    /** font size. **/
+    int FONT_SIZE = 14;
     /** ground. **/
     int GROUND = 300;
     /** bomb height. **/

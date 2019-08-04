@@ -43,20 +43,21 @@ public class SpaceSprite {
      * Sets visibility of sprite.
      * @param spriteVis visibility of sprite
      **********************************************/
-    public void setVisible(boolean spriteVis) {
+    public void setVisible(final boolean spriteVis) {
         this.visible = spriteVis;
     }
 
     /***********************************************
      * Sets the image for the sprite.
-     * @param image sprite image
+     * @param img sprite image
      **********************************************/
-    public void setImage(Image image) {
-        this.image = image;
+    public void setImage(final Image img) {
+        this.image = img;
     }
 
     /***********************************************
      * Gets the image for the sprite.
+     * @return returns image of sprite
      **********************************************/
     public Image getImage() {
         return image;
@@ -64,22 +65,23 @@ public class SpaceSprite {
 
     /***********************************************
      * Sets x location of sprite.
-     * @param x horizontal sprite location
+     * @param hz horizontal sprite location
      **********************************************/
-    public void setX(final int x) {
-        this.x = x;
+    public void setX(final int hz) {
+        this.x = hz;
     }
 
     /***********************************************
      * Sets x location of sprite.
-     * @param y horizontal sprite location
+     * @param vt horizontal sprite location
      **********************************************/
-    public void setY(final int y) {
-        this.y = y;
+    public void setY(final int vt) {
+        this.y = vt;
     }
 
     /***********************************************
      * Gets y location of sprite.
+     * @return returns y location
      **********************************************/
     public int getY() {
         return y;
@@ -87,6 +89,7 @@ public class SpaceSprite {
 
     /***********************************************
      * Gets x location of sprite.
+     * @return returns x location
      **********************************************/
     public int getX() {
         return x;
@@ -96,7 +99,7 @@ public class SpaceSprite {
      * Sets status of sprite.
      * @param status sprite life status
      **********************************************/
-    public void setDying(boolean status) {
+    public void setDying(final boolean status) {
         this.dying = status;
     }
 

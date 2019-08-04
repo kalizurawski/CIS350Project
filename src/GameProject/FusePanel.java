@@ -1,7 +1,12 @@
 package GameProject;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.Color;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -10,7 +15,7 @@ import java.util.TimerTask;
  * This class is used for all universal game panel
  * functions.
  **************************************************/
-public class FusePanel extends JPanel{
+public class FusePanel extends JPanel {
 
     /** timer variable. **/
     private static final int TIMER_DELAY = 1000;
@@ -137,6 +142,8 @@ public class FusePanel extends JPanel{
 
     /***********************************************
      * Get the countdown number.
+     * @param num integer of image number
+     * @return ImageIcon
      **********************************************/
     private ImageIcon getNumber(final int num) {
         switch (num) {

@@ -1,6 +1,6 @@
 package GameProject;
 
-import java.awt.*;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
@@ -9,16 +9,19 @@ import javax.swing.ImageIcon;
 public class SpacePlayer extends SpaceSprite implements SpaceCommons {
 
     /** starting y position of player. **/
-    private final int START_Y = 280;
+    private static final int START_Y = 280;
     /** starting x position of player. **/
-    private final int START_X = 270;
+    private static final int START_X = 270;
     /** movement amount of player. **/
-    private final int MVMT_AMT = 2;
+    private static final int MVMT_AMT = 2;
     /** player image declaration. **/
     private final String playerImg;
     /** player width. **/
     private int width;
 
+    /***********************************************
+     * Instantiates class.
+     **********************************************/
     public SpacePlayer() {
         playerImg = "warioSpace.png";
 
@@ -50,8 +53,9 @@ public class SpacePlayer extends SpaceSprite implements SpaceCommons {
 
     /***********************************************
      * Takes player input of left and right.
+     * @param e entered key
      **********************************************/
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(final KeyEvent e) {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
@@ -65,8 +69,9 @@ public class SpacePlayer extends SpaceSprite implements SpaceCommons {
 
     /***********************************************
      * Stops moving player when key is released.
+     * @param e entered key
      **********************************************/
-    public void keyReleased(KeyEvent e) {
+    public void keyReleased(final KeyEvent e) {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {

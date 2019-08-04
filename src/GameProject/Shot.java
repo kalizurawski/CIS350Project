@@ -1,16 +1,16 @@
 package GameProject;
 
 import javax.swing.ImageIcon;
-import java.awt.*;
+import java.awt.Image;
 
 public class Shot extends SpaceSprite implements SpaceCommons {
 
     /** image for bullet. **/
-    private final String shotImg = "coinDark.jpg";
+    private static final String shotImg = "coinDark.jpg";
     /** horizontal space. **/
-    private final int H_SPACE = 6;
+    private static final int H_SPACE = 6;
     /** vertical space. **/
-    private final int V_SPACE = 1;
+    private static final int V_SPACE = 1;
 
     /***********************************************
      * Unused public shot initializer.

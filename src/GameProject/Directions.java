@@ -1,5 +1,14 @@
 package GameProject;
 
 public enum Directions {
-    UP, DOWN, LEFT, RIGHT, NONE
+    /** player just moved up. **/
+    UP,
+    /** player just moved down. **/
+    DOWN,
+    /** player just moved left. **/
+    LEFT,
+    /** player just moved right. **/
+    RIGHT,
+    /** player has not moved. **/
+    NONE
 }

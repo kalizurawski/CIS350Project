@@ -1,9 +1,15 @@
 package GameProject;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JPanel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.GridLayout;
+import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import static java.lang.Character.toLowerCase;
 

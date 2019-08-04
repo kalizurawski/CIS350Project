@@ -1,7 +1,7 @@
 package GameProject;
 
 import javax.swing.ImageIcon;
-import java.awt.*;
+import java.awt.Image;
 
 public class Aliens extends SpaceSprite implements SpaceCommons {
 
@@ -36,6 +36,7 @@ public class Aliens extends SpaceSprite implements SpaceCommons {
 
     /***********************************************
      * Get bomb object.
+     * @return bomb object
      **********************************************/
     public Bomb getBomb() {
         return bomb;
@@ -56,13 +57,15 @@ public class Aliens extends SpaceSprite implements SpaceCommons {
          * @param x horizontal bomb location
          * @param y vertical bomb location
          **********************************************/
-        public Bomb(final int x, final int y) {
+        public  Bomb(final int x, final int y) {
             bombImg = "bomb.jpg";
             setDestroyed(true);
             this.x = x;
             this.y = y;
-            ImageIcon ii = new ImageIcon(new ImageIcon(bombImg).getImage()
-                    .getScaledInstance(BOMB_WIDTH, BOMB_HEIGHT, Image.SCALE_DEFAULT));
+            ImageIcon ii;
+            ii = new ImageIcon(new
+                    ImageIcon(bombImg).getImage().getScaledInstance(BOMB_WIDTH,
+                            BOMB_HEIGHT, Image.SCALE_DEFAULT));
             setImage(ii.getImage());
         }
 

@@ -1,6 +1,5 @@
 package GameProject;
 
-import javax.swing.*;
 import java.util.Random;
 
 /**************************************************
@@ -171,7 +170,7 @@ public class Collect {
     }
 
     /***********************************************
-     * This function is for testing purposes only
+     * This function is for testing purposes only.
      **********************************************/
     public void forceWin() {
         player.setCurrX(1);

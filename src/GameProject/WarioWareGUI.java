@@ -11,6 +11,7 @@ a memory match game.
 package GameProject;
 
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +37,8 @@ public class WarioWareGUI extends JFrame {
     private ImageIcon ball;
     
     private ImageIcon coin;
+    
+    private ImageIcon warioSpace;
 
     /** Adjusted size of images. **/
     private static final int IMAGE_SIZE = 100;
@@ -61,6 +64,10 @@ public class WarioWareGUI extends JFrame {
     private static final int BALL_BUTTON_X = 50;
     
     private static final int BALL_BUTTON_Y = 250;
+    
+    private static final int SPACE_BUTTON_X = 275;
+    
+    private static final int SPACE_BUTTON_Y = 250;
 
     /** X coordinate where the memory game button will be placed. **/
     private static final int MEMORY_BUTTON_X = 50;
@@ -179,6 +186,66 @@ public class WarioWareGUI extends JFrame {
 
                 }
             });
+        
+        
+        //Makes the button for the ball game
+        JButton spaceSelect = new JButton("Space Invasion",warioSpace);
+        JPanel spacePanel = new JPanel();
+        spacePanel.add(spaceSelect);
+        spaceSelect.setBounds(SPACE_BUTTON_X, SPACE_BUTTON_Y,
+                BUTTON_WIDTH, BUTTON_HEIGHT);
+        spaceSelect.setHorizontalTextPosition(SwingConstants.CENTER);
+        spaceSelect.setVerticalTextPosition(SwingConstants.BOTTOM);
+        
+        spacePanel.setBounds(SPACE_BUTTON_X, SPACE_BUTTON_Y,
+                BUTTON_WIDTH, BUTTON_HEIGHT);
+
+        //places the button on the GUI frame
+        guiFrame.add(spacePanel);
+        spacePanel.setVisible(true);
+        spaceSelect.setVisible(true);
+
+        //enables the button to launch the coin collector game
+        spaceSelect.addActionListener(new ActionListener() {
+            public void actionPerformed(final ActionEvent e) {
+
+                //closes the GUI
+                guiFrame.dispose();
+
+                //launches the coin collector game and its GUI
+                launchSpace();
+
+                }
+            });
+        
+      // Creates an invisible "fixer" panel and button and sets its
+      // parameters corrects a bug where buttons were not loading into
+      // their intended locations
+        JButton fixerSelect = new JButton("FIXER");
+        JPanel fixerPanel = new JPanel();
+        spacePanel.add(spaceSelect);
+        spaceSelect.setBounds(SPACE_BUTTON_X, SPACE_BUTTON_Y,
+                BUTTON_WIDTH, BUTTON_HEIGHT);
+        spaceSelect.setHorizontalTextPosition(SwingConstants.CENTER);
+        spaceSelect.setVerticalTextPosition(SwingConstants.BOTTOM);
+        
+        spacePanel.setBounds(SPACE_BUTTON_X, SPACE_BUTTON_Y,
+                BUTTON_WIDTH, BUTTON_HEIGHT);
+
+        //places the button on the GUI frame
+        guiFrame.add(fixerPanel);
+        fixerPanel.setVisible(false);
+        fixerSelect.setVisible(false);
+
+        //enables the button to launch the coin collector game
+        spaceSelect.addActionListener(new ActionListener() {
+            public void actionPerformed(final ActionEvent e) {
+
+                //closes the GUI
+                guiFrame.dispose();
+
+                }
+            });
 
         //repaints the GUI to ensure it is layered properly
         guiFrame.repaint();
@@ -254,6 +321,13 @@ public class WarioWareGUI extends JFrame {
         tt.start();   
     	
     }
+    
+    public void launchSpace() {
+        
+            SpaceInvaders ex = new SpaceInvaders();
+            ex.setVisible(true);
+            
+    }
 
 
     /***********************************************
@@ -270,6 +344,10 @@ public class WarioWareGUI extends JFrame {
                         Image.SCALE_DEFAULT));
         
         coin = new ImageIcon(new ImageIcon("coinAdjusted.jpg")
+                .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
+                        Image.SCALE_DEFAULT));
+        
+        warioSpace = new ImageIcon(new ImageIcon("warioSpace.png")
                 .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
                         Image.SCALE_DEFAULT));
 

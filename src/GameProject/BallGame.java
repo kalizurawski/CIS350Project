@@ -15,13 +15,13 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
-public class BallGame extends JComponent implements ActionListener, MouseMotionListener, KeyListener {
+public final class BallGame extends JComponent implements ActionListener, MouseMotionListener, KeyListener {
 
     private int ballx = 150;
     private int bally = 30;
     private int paddlex = 0;
-    private int ballySpeed = 7;
-    private int ballxSpeed = 5;
+    private static int ballySpeed = 7;
+    private static int ballxSpeed = 5;
     private int score = 0;
     private int round = 1;
     private int bounces = 0;
@@ -32,6 +32,28 @@ public class BallGame extends JComponent implements ActionListener, MouseMotionL
 
     public static void main(int round) {
     	
+    	//only true the first time the game is run
+    	if ((gameOver == false) && (gameOverFlag == false)) {
+    		gameMake(round);
+    	}
+    	
+    	//only true after the game has resulted in a loss
+    	if ((gameOver == true) && (gameOverFlag==true)) {
+    		gameOver = false;
+    		//gameMake(round);
+    		//WarioWareGUI gui = new WarioWareGUI();
+    	}
+    	
+    	//only true after the game has resulted in a loss and
+    	//returned to main menu
+    	if ((gameOver == false) && (gameOverFlag==true)) {
+    		
+    	}
+
+    }
+    
+    public static void gameMake(int round) {
+    	
         JFrame wind = new JFrame("RedBall/GamePinfo");
         BallGame g = new BallGame();
         wind.add(g);
@@ -40,17 +62,13 @@ public class BallGame extends JComponent implements ActionListener, MouseMotionL
         wind.setLocationRelativeTo(null);
         wind.setVisible(true);
         wind.addMouseMotionListener(g);
+        
+        wind.dispose();
 
         //speed up the timer each round
         Timer tt = new Timer(delay, g);
         tt.start();
         
-    	if (gameOver = true) {
-            //Returns to Warioware 2.0 Main Menu
-    		wind.dispose();
-    		WarioWareGUI gui = new WarioWareGUI();
-    	}
-
     }
 
     public void newball(int ballx, int bally, int ballxspeed, int ballyspeed) {
@@ -103,11 +121,13 @@ public class BallGame extends JComponent implements ActionListener, MouseMotionL
         bally = bally + ballySpeed;
 
         if (gameOverFlag) {
-        	gameOverFlag = false;
+        	round = 1;
         	BallGame.main(round);
         }
         
         else if (gameOver) {
+        	
+        	gameOverFlag = true;
             
         	//displays the dialog box indicating victory
             JOptionPane.showMessageDialog(this, "You lost on round"
@@ -116,8 +136,8 @@ public class BallGame extends JComponent implements ActionListener, MouseMotionL
             ballx = 150;
             bally = 30;
             
-//            //terminate the program upon acknowledgement of loss
-//            System.exit(0);
+            //terminate the program upon acknowledgement of loss
+            System.exit(0);
             
         }
         

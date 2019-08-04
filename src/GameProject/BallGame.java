@@ -103,12 +103,11 @@ public class BallGame extends JComponent implements ActionListener, MouseMotionL
         bally = bally + ballySpeed;
 
         if (gameOverFlag) {
+        	gameOverFlag = false;
         	BallGame.main(round);
         }
         
         else if (gameOver) {
-        	
-        	gameOverFlag = true;
             
         	//displays the dialog box indicating victory
             JOptionPane.showMessageDialog(this, "You lost on round"

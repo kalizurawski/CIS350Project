@@ -15,6 +15,8 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 import javax.swing.Icon;
@@ -30,6 +32,10 @@ public class WarioWareGUI extends JFrame {
 
     /** Image Icon for one of the buttons. **/
     private ImageIcon thinkingMario;
+    
+    private ImageIcon ball;
+    
+    private ImageIcon coin;
 
     /** Adjusted size of images. **/
     private static final int IMAGE_SIZE = 100;
@@ -85,16 +91,31 @@ public class WarioWareGUI extends JFrame {
         guiFrame.pack();
         guiFrame.setVisible(true);
 
-        //Instantiates the coin icon
-        Icon coin = new ImageIcon("coin.jpg");
-
+//        JLabel label = new JLabel("Some info");
+//        JButton button = new JButton("Ok");
+//        JPanel panel = new JPanel();
+//         panel.add( button );
+//
+//        JFrame frame = ... 
+//
+//        frame.add( label, BorderLayout.NORTH );
+//        frame.add( panel , BorderLayout.CENTER);
+        
         //places the coin icon on the button and sets its parameters
-        JButton coinSelect = new JButton(coin);
+        JButton coinSelect = new JButton("Coin Collect", coin);
+        JPanel coinPanel = new JPanel();
+        coinPanel.add(coinSelect);
         coinSelect.setBounds(COIN_BUTTON_X, COIN_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
+        coinSelect.setHorizontalTextPosition(SwingConstants.CENTER);
+        coinSelect.setVerticalTextPosition(SwingConstants.BOTTOM);
 
+        coinPanel.setBounds(COIN_BUTTON_X, COIN_BUTTON_Y,
+                BUTTON_WIDTH, BUTTON_HEIGHT);
+        
         //places the button on the GUI frame
-        guiFrame.add(coinSelect);
+        guiFrame.add(coinPanel);
+        coinPanel.setVisible(true);
         coinSelect.setVisible(true);
 
         //enables the button to launch the coin collector game
@@ -109,14 +130,22 @@ public class WarioWareGUI extends JFrame {
 
                 }
             });
-
+        
         //creates button, places mario icon on it, sets its parameters
-        JButton memorySelect = new JButton(null, thinkingMario);
+        JButton memorySelect = new JButton("Memory Match", thinkingMario);
+        JPanel memoryPanel = new JPanel();
+        memoryPanel.add(memorySelect);
         memorySelect.setBounds(MEMORY_BUTTON_X, MEMORY_BUTTON_Y,
+                BUTTON_WIDTH, BUTTON_HEIGHT);
+        memorySelect.setHorizontalTextPosition(SwingConstants.CENTER);
+        memorySelect.setVerticalTextPosition(SwingConstants.BOTTOM);
+        
+        memoryPanel.setBounds(MEMORY_BUTTON_X, MEMORY_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
 
         //adds the button to the GUI
-        guiFrame.add(memorySelect);
+        guiFrame.add(memoryPanel);
+        memoryPanel.setVisible(true);
         memorySelect.setVisible(true);
 
         //enables the button to launch the memory match game
@@ -132,12 +161,20 @@ public class WarioWareGUI extends JFrame {
             });
         
       //Makes the button for the ball game
-        JButton ballSelect = new JButton("BALL GAME");
+        JButton ballSelect = new JButton("Ball Bounce",ball);
+        JPanel ballPanel = new JPanel();
+        ballPanel.add(ballSelect);
         ballSelect.setBounds(BALL_BUTTON_X, BALL_BUTTON_Y,
+                BUTTON_WIDTH, BUTTON_HEIGHT);
+        ballSelect.setHorizontalTextPosition(SwingConstants.CENTER);
+        ballSelect.setVerticalTextPosition(SwingConstants.BOTTOM);
+        
+        ballPanel.setBounds(BALL_BUTTON_X, BALL_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
 
         //places the button on the GUI frame
-        guiFrame.add(ballSelect);
+        guiFrame.add(ballPanel);
+        ballPanel.setVisible(true);
         ballSelect.setVisible(true);
 
         //enables the button to launch the coin collector game
@@ -235,6 +272,14 @@ public class WarioWareGUI extends JFrame {
     private void initIcons() {
 
         thinkingMario = new ImageIcon(new ImageIcon("ThinkingMario.png")
+                .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
+                        Image.SCALE_DEFAULT));
+        
+        ball = new ImageIcon(new ImageIcon("ball.jpg")
+                .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
+                        Image.SCALE_DEFAULT));
+        
+        coin = new ImageIcon(new ImageIcon("coinAdjusted.jpg")
                 .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
                         Image.SCALE_DEFAULT));
 

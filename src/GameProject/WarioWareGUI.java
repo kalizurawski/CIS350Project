@@ -90,16 +90,6 @@ public class WarioWareGUI extends JFrame {
         guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         guiFrame.pack();
         guiFrame.setVisible(true);
-
-//        JLabel label = new JLabel("Some info");
-//        JButton button = new JButton("Ok");
-//        JPanel panel = new JPanel();
-//         panel.add( button );
-//
-//        JFrame frame = ... 
-//
-//        frame.add( label, BorderLayout.NORTH );
-//        frame.add( panel , BorderLayout.CENTER);
         
         //places the coin icon on the button and sets its parameters
         JButton coinSelect = new JButton("Coin Collect", coin);

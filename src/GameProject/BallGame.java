@@ -26,10 +26,12 @@ public class BallGame extends JComponent implements ActionListener, MouseMotionL
     private int round = 1;
     private int bounces = 0;
     private static int delay = 20;
-    public boolean gameOver, started;
+    public static boolean gameOver = false;
+    public static boolean gameOverFlag = false;
+    public boolean started;
 
     public static void main(int round) {
-
+    	
         JFrame wind = new JFrame("RedBall/GamePinfo");
         BallGame g = new BallGame();
         wind.add(g);
@@ -42,6 +44,12 @@ public class BallGame extends JComponent implements ActionListener, MouseMotionL
         //speed up the timer each round
         Timer tt = new Timer(delay, g);
         tt.start();
+        
+    	if (gameOver = true) {
+            //Returns to Warioware 2.0 Main Menu
+    		wind.dispose();
+    		WarioWareGUI gui = new WarioWareGUI();
+    	}
 
     }
 
@@ -94,18 +102,26 @@ public class BallGame extends JComponent implements ActionListener, MouseMotionL
     	ballx = ballx + ballxSpeed;
         bally = bally + ballySpeed;
 
-        if (gameOver) {
+        if (gameOverFlag) {
+        	gameOverFlag = false;
+        	BallGame.main(round);
+        }
+        
+        else if (gameOver) {
             
         	//displays the dialog box indicating victory
             JOptionPane.showMessageDialog(this, "You lost on round"
             		+ round + "!");
             
-            //terminate the program upon acknowledgement of loss
-            System.exit(0);
+            ballx = 150;
+            bally = 30;
+            
+//            //terminate the program upon acknowledgement of loss
+//            System.exit(0);
             
         }
         
-        if (bounces==10) {
+        else if (bounces==10) {
         	
         	//reset score
         	bounces = 0;
@@ -119,7 +135,7 @@ public class BallGame extends JComponent implements ActionListener, MouseMotionL
         	
         
         // Sets ball speed upward if it hits the paddle
-        if (ballx >= paddlex && ballx <= paddlex + 100 && bally >= 475) {
+        else if (ballx >= paddlex && ballx <= paddlex + 100 && bally >= 475) {
 
             ballySpeed = -7 - (round*2);
             
@@ -130,28 +146,28 @@ public class BallGame extends JComponent implements ActionListener, MouseMotionL
         }
 
         // Handles loss condition
-        if (bally >= 500 ) {
+        else if (bally >= 500 ) {
 
             gameOver = true;
 
         }
 
         // Sets ball movement down if it hits the ceiling
-        if (bally <= 0) {
+        else if (bally <= 0) {
 
             ballySpeed = 7 + (round*2);
 
         }
 
         // Sets ball
-        if (ballx >= 775) {
+        else if (ballx >= 775) {
 
             ballxSpeed = -5 - (round*2);
 
         }
 
         // Window left
-        if (ballx <= 0) {
+        else if (ballx <= 0) {
 
             ballxSpeed = 5 + (round*2);
 

@@ -15,7 +15,9 @@ import javax.swing.Timer;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +27,7 @@ import java.util.Collections;
 @SuppressWarnings("serial")
 
 public class MemoryBoard extends JFrame {
-
+	
     /** vector of cards. **/
     private List<MemoryCard> cards;
 
@@ -40,6 +42,8 @@ public class MemoryBoard extends JFrame {
 
     /** timer object. **/
     private Timer t;
+    
+    private Timer gameTimer;
 
     /** Boo Image. **/
     private ImageIcon boo;
@@ -70,6 +74,14 @@ public class MemoryBoard extends JFrame {
 
     /** Yoshi Image. **/
     private ImageIcon yoshi;
+    
+    private static int round = 1;
+    
+    private static int timeRemaining = 120; //change this bakc to two minutes LATER
+    
+    private static int timeInitial = 120;
+    
+    private static final int SECOND = 1000;
 
     /** The delay after looking at cards. **/
     private static final int DELAY = 500;
@@ -133,6 +145,7 @@ public class MemoryBoard extends JFrame {
                     doTurn();
                     }
                 });
+            
             cardsList.add(c);
             }
         this.cards = cardsList;
@@ -157,12 +170,47 @@ public class MemoryBoard extends JFrame {
             pane.add(c);
             }
         setTitle("Memory Match");
+        
+        
+        //starts game timer
+        ActionListener actListner = new ActionListener() {
+
+        	@Override
+        	public void actionPerformed(ActionEvent event) {
+        		timeRemaining -= 1;
+        		setTitle("          Time Remaining: "+ timeRemaining + 
+        				"          Round: " + round);
+        		
+        		if (timeRemaining==0) {
+        			
+                    //displays the dialog box indicating victory
+                    JOptionPane.showMessageDialog(pane, "You lose!"
+                    		+ "\nYou made it to round" + round + "!");
+
+                    //Returns to Warioware 2.0 Main Menu
+                    dispose();
+                    WarioWareGUI gui = new WarioWareGUI();
+                    
+                    //terminate the program upon acknowledgement of victory
+                    //System.exit(0);
+        		}
+        		
+        	}
+        };
+
+        gameTimer = new Timer(SECOND, actListner);
+        gameTimer.start();
+        
         }
+    
 
     /******************************************************************
      * Handles the visual aspect of selecting each card.
     *****************************************************************/
     public void doTurn() {
+    	
+		setTitle("          Time Remaining: "+ timeRemaining + 
+				"          Round: " + round);
 
         //when the first card is selected
         if (c1 == null && c2 == null) {
@@ -251,7 +299,7 @@ public class MemoryBoard extends JFrame {
 
                 }
 
-            //starts the timer after selecting the card
+            //starts the timer after selecting a card
             t.start();
 
             }
@@ -277,8 +325,12 @@ public class MemoryBoard extends JFrame {
                 //displays the dialog box indicating victory
                 JOptionPane.showMessageDialog(this, "You win!");
 
+                round++;
+                dispose();
+                reRunGame();
+                
                 //terminate the program upon acknowledgement of victory
-                System.exit(0);
+                //System.exit(0);
                 }
 
             }
@@ -312,6 +364,41 @@ public class MemoryBoard extends JFrame {
         return true;
         }
 
+    /******************************************************************
+     * Reruns the game with a decreased timer
+     *******************************************************************/
+    
+    public void reRunGame() {
+        
+        /** The X coordinate where the gui will be placed. **/
+        final int FRAME_X_LOCATION = 500;
+
+        /** The Y coordinate where the gui will be placed. **/
+        final int FRAME_Y_LOCATION = 250;
+
+        /** The gui width. **/
+        final int GUI_WIDTH = 500;
+
+        /** The gui height. **/
+        final int GUI_HEIGHT = 500;
+    	
+    	//Creates the new GUI object for the memory match game
+        //This also launches the game
+        MemoryBoard b = new MemoryBoard();
+        
+        //resets the timer
+        timeRemaining = timeInitial;
+
+        //sets parameters of the new GUI
+        b.setPreferredSize(new Dimension(GUI_WIDTH, GUI_HEIGHT));
+        b.setLocation(FRAME_X_LOCATION, FRAME_Y_LOCATION);
+        b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        b.pack();
+        b.setVisible(true);
+        
+    }
+    
+    
     /******************************************************************
      * Initializes all icons.
      *****************************************************************/

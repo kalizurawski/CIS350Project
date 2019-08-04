@@ -43,7 +43,7 @@ public class SpaceSprite {
      * Sets visibility of sprite.
      * @param spriteVis visibility of sprite
      **********************************************/
-    protected void setVisible(boolean spriteVis) {
+    public void setVisible(boolean spriteVis) {
         this.visible = spriteVis;
     }
 

@@ -34,7 +34,8 @@ public class Shot extends SpaceSprite implements SpaceCommons {
      **********************************************/
     private void initShot(final int x, final int y) {
         ImageIcon ii = new ImageIcon(new ImageIcon(shotImg).getImage()
-                .getScaledInstance(BOMB_WIDTH, BOMB_HEIGHT, Image.SCALE_DEFAULT));
+                .getScaledInstance(BOMB_WIDTH,
+                        BOMB_HEIGHT, Image.SCALE_DEFAULT));
         setImage(ii.getImage());
 
         setX(x + H_SPACE);

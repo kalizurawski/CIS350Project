@@ -91,16 +91,22 @@ public class CollectPanel extends JPanel implements KeyListener {
 
         // up/down icons
         playerJumpLeft = new ImageIcon(new ImageIcon("jumpLeft.png")
-                .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
+                .getImage().getScaledInstance(
+                        IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
 
         playerJumpRight = new ImageIcon(new ImageIcon("jumpRight.png")
-                .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
+                .getImage().getScaledInstance(
+                        IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
 
         // standing icons
-        playerStandingLeft = new ImageIcon(new ImageIcon("standingLeft.jpg").getImage()
-                .getScaledInstance(IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
-        playerStandingRight = new ImageIcon(new ImageIcon("standingRight.jpg").getImage()
-                .getScaledInstance(IMAGE_SIZE, IMAGE_SIZE, Image.SCALE_DEFAULT));
+        playerStandingLeft = new ImageIcon(new ImageIcon(
+                "standingLeft.jpg").getImage()
+                .getScaledInstance(IMAGE_SIZE,
+                        IMAGE_SIZE, Image.SCALE_DEFAULT));
+        playerStandingRight = new ImageIcon(new ImageIcon(
+                "standingRight.jpg").getImage()
+                .getScaledInstance(IMAGE_SIZE,
+                        IMAGE_SIZE, Image.SCALE_DEFAULT));
     }
 
     /***********************************************

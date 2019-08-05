@@ -68,9 +68,9 @@ public final class BallGame extends JComponent
     /** current number of bounces. **/
     private int bounces = 0;
     /** if game is over. **/
-    public static boolean gameOver = false;
+    private static boolean gameOver = false;
     /** flag for game over. **/
-    public static boolean gameOverFlag = false;
+    private static boolean gameOverFlag = false;
 
     /*********************************************
      * Starts Game.

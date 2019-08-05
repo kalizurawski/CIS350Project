@@ -29,9 +29,9 @@ public class SpaceBoard extends JPanel implements Runnable, SpaceCommons {
     private Shot shot;
 
     /** alien starting x location. **/
-    private final int ALIEN_INIT_X = 150;
+    private static final int ALIEN_INIT_X = 150;
     /** alien starting y location. **/
-    private final int ALIEN_INIT_Y = 5;
+    private static final int ALIEN_INIT_Y = 5;
     /** direction. **/
     private int direction = -1;
     /** number of deaths. **/

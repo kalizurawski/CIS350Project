@@ -4,16 +4,22 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 /***********************************************
- * A test class for
+ * Space Invaders gui.
  **********************************************/
 public class SpaceInvaders extends JFrame implements SpaceCommons {
 
 
+    /***********************************************
+     * Initializer.
+     **********************************************/
     public SpaceInvaders() {
 
         initUI();
     }
 
+    /***********************************************
+     * UI Initializer.
+     **********************************************/
     private void initUI() {
 
         add(new SpaceBoard());
@@ -24,7 +30,11 @@ public class SpaceInvaders extends JFrame implements SpaceCommons {
         setResizable(false);
     }
 
-    public static void main(String[] args) {
+    /***********************************************
+     * Main executable.
+     * @param args string arguments
+     **********************************************/
+    public static void main(final String[] args) {
 
         EventQueue.invokeLater(() -> {
             SpaceInvaders ex = new SpaceInvaders();

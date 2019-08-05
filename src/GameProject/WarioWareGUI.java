@@ -11,7 +11,6 @@ a memory match game.
 package GameProject;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -31,13 +29,13 @@ import javax.swing.JButton;
  *****************************************************************/
 public class WarioWareGUI extends JFrame {
 
-    /** Image Icon for one of the buttons. **/
+    /** mario icon. **/
     private ImageIcon thinkingMario;
-    
+    /** ball icon. **/
     private ImageIcon ball;
-    
+    /** coin icon. **/
     private ImageIcon coin;
-    
+    /** space invaders icon. **/
     private ImageIcon warioSpace;
 
     /** Adjusted size of images. **/
@@ -60,13 +58,17 @@ public class WarioWareGUI extends JFrame {
 
     /** Y coordinate where the coin game button will be placed. **/
     private static final int COIN_BUTTON_Y = 50;
-    
+
+    /** X coordinate where the ball game button will be placed. **/
     private static final int BALL_BUTTON_X = 50;
-    
+
+    /** Y coordinate where the ball game button will be placed. **/
     private static final int BALL_BUTTON_Y = 250;
-    
+
+    /** X coordinate where the space invader game button will be placed. **/
     private static final int SPACE_BUTTON_X = 275;
-    
+
+    /** & coordinate where the space invader game button will be placed. **/
     private static final int SPACE_BUTTON_Y = 250;
 
     /** X coordinate where the memory game button will be placed. **/
@@ -97,7 +99,6 @@ public class WarioWareGUI extends JFrame {
         guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         guiFrame.pack();
         guiFrame.setVisible(true);
-        
         //places the coin icon on the button and sets its parameters
         JButton coinSelect = new JButton("Coin Collect", coin);
         JPanel coinPanel = new JPanel();
@@ -106,15 +107,12 @@ public class WarioWareGUI extends JFrame {
                 BUTTON_WIDTH, BUTTON_HEIGHT);
         coinSelect.setHorizontalTextPosition(SwingConstants.CENTER);
         coinSelect.setVerticalTextPosition(SwingConstants.BOTTOM);
-
         coinPanel.setBounds(COIN_BUTTON_X, COIN_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
-        
         //places the button on the GUI frame
         guiFrame.add(coinPanel);
         coinPanel.setVisible(true);
         coinSelect.setVisible(true);
-
         //enables the button to launch the coin collector game
         coinSelect.addActionListener(new ActionListener() {
             public void actionPerformed(final ActionEvent e) {
@@ -127,7 +125,6 @@ public class WarioWareGUI extends JFrame {
 
                 }
             });
-        
         //creates button, places mario icon on it, sets its parameters
         JButton memorySelect = new JButton("Memory Match", thinkingMario);
         JPanel memoryPanel = new JPanel();
@@ -136,15 +133,12 @@ public class WarioWareGUI extends JFrame {
                 BUTTON_WIDTH, BUTTON_HEIGHT);
         memorySelect.setHorizontalTextPosition(SwingConstants.CENTER);
         memorySelect.setVerticalTextPosition(SwingConstants.BOTTOM);
-        
         memoryPanel.setBounds(MEMORY_BUTTON_X, MEMORY_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
-
         //adds the button to the GUI
         guiFrame.add(memoryPanel);
         memoryPanel.setVisible(true);
         memorySelect.setVisible(true);
-
         //enables the button to launch the memory match game
         memorySelect.addActionListener(new ActionListener() {
             public void actionPerformed(final ActionEvent e) {
@@ -156,24 +150,20 @@ public class WarioWareGUI extends JFrame {
                 launchMemory();
                 }
             });
-        
       //Makes the button for the ball game
-        JButton ballSelect = new JButton("Ball Bounce",ball);
+        JButton ballSelect = new JButton("Ball Bounce", ball);
         JPanel ballPanel = new JPanel();
         ballPanel.add(ballSelect);
         ballSelect.setBounds(BALL_BUTTON_X, BALL_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
         ballSelect.setHorizontalTextPosition(SwingConstants.CENTER);
         ballSelect.setVerticalTextPosition(SwingConstants.BOTTOM);
-        
         ballPanel.setBounds(BALL_BUTTON_X, BALL_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
-
         //places the button on the GUI frame
         guiFrame.add(ballPanel);
         ballPanel.setVisible(true);
         ballSelect.setVisible(true);
-
         //enables the button to launch the coin collector game
         ballSelect.addActionListener(new ActionListener() {
             public void actionPerformed(final ActionEvent e) {
@@ -186,25 +176,20 @@ public class WarioWareGUI extends JFrame {
 
                 }
             });
-        
-        
         //Makes the button for the ball game
-        JButton spaceSelect = new JButton("Space Invasion",warioSpace);
+        JButton spaceSelect = new JButton("Space Invasion", warioSpace);
         JPanel spacePanel = new JPanel();
         spacePanel.add(spaceSelect);
         spaceSelect.setBounds(SPACE_BUTTON_X, SPACE_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
         spaceSelect.setHorizontalTextPosition(SwingConstants.CENTER);
         spaceSelect.setVerticalTextPosition(SwingConstants.BOTTOM);
-        
         spacePanel.setBounds(SPACE_BUTTON_X, SPACE_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
-
         //places the button on the GUI frame
         guiFrame.add(spacePanel);
         spacePanel.setVisible(true);
         spaceSelect.setVisible(true);
-
         //enables the button to launch the coin collector game
         spaceSelect.addActionListener(new ActionListener() {
             public void actionPerformed(final ActionEvent e) {
@@ -214,10 +199,8 @@ public class WarioWareGUI extends JFrame {
 
                 //launches the coin collector game and its GUI
                 launchSpace();
-
                 }
             });
-        
       // Creates an invisible "fixer" panel and button and sets its
       // parameters corrects a bug where buttons were not loading into
       // their intended locations
@@ -228,15 +211,12 @@ public class WarioWareGUI extends JFrame {
                 BUTTON_WIDTH, BUTTON_HEIGHT);
         spaceSelect.setHorizontalTextPosition(SwingConstants.CENTER);
         spaceSelect.setVerticalTextPosition(SwingConstants.BOTTOM);
-        
         spacePanel.setBounds(SPACE_BUTTON_X, SPACE_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
-
         //places the button on the GUI frame
         guiFrame.add(fixerPanel);
         fixerPanel.setVisible(false);
         fixerSelect.setVisible(false);
-
         //enables the button to launch the coin collector game
         spaceSelect.addActionListener(new ActionListener() {
             public void actionPerformed(final ActionEvent e) {
@@ -246,7 +226,6 @@ public class WarioWareGUI extends JFrame {
 
                 }
             });
-
         //repaints the GUI to ensure it is layered properly
         guiFrame.repaint();
 
@@ -288,7 +267,6 @@ public class WarioWareGUI extends JFrame {
      * object and sets the parameters of the GUI. This also
      * launches the game.
      *****************************************************************/
-
     public void launchMemory() {
 
         //Creates the new GUI object for the memory match game
@@ -301,13 +279,13 @@ public class WarioWareGUI extends JFrame {
         b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         b.pack();
         b.setVisible(true);
-
         }
-    
+
+    /***********************************************
+     * Begins ball game.
+     **********************************************/
     public void launchBall() {
-    	
-    	final int delay = 20;
-    	
+        final int delay = 20;
         JFrame wind = new JFrame("RedBall/GamePinfo");
         BallGame g = new BallGame();
         wind.add(g);
@@ -316,17 +294,16 @@ public class WarioWareGUI extends JFrame {
         wind.setLocationRelativeTo(null);
         wind.setVisible(true);
         wind.addMouseMotionListener(g);
-
         Timer tt = new Timer(delay, g);
-        tt.start();   
-    	
+        tt.start();
     }
-    
+
+    /***********************************************
+     * Begins space invaders game.
+     **********************************************/
     public void launchSpace() {
-        
             SpaceInvaders ex = new SpaceInvaders();
             ex.setVisible(true);
-            
     }
 
 
@@ -338,18 +315,14 @@ public class WarioWareGUI extends JFrame {
         thinkingMario = new ImageIcon(new ImageIcon("ThinkingMario.png")
                 .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
                         Image.SCALE_DEFAULT));
-        
         ball = new ImageIcon(new ImageIcon("ball.jpg")
                 .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
                         Image.SCALE_DEFAULT));
-        
         coin = new ImageIcon(new ImageIcon("coinAdjusted.jpg")
                 .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
                         Image.SCALE_DEFAULT));
-        
         warioSpace = new ImageIcon(new ImageIcon("warioSpace.png")
                 .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
                         Image.SCALE_DEFAULT));
-
         }
     }

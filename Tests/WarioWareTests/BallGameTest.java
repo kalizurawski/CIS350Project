@@ -12,9 +12,9 @@ import GameProject.Directions;
 public class BallGameTest {
 	
 	BallGame game;
-	
+
 //	@Test
-//	public void 
+//	public void
 
 //	/** collect player. **/
 //    CollectPlayer player;

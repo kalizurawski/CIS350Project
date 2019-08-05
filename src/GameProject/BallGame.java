@@ -58,9 +58,9 @@ public final class BallGame extends JComponent
     private int paddlex = 0;
 
     /** speed of ball Y. **/
-    private int ballySpeed;
+    private int ballySpeed = 5;
     /** speed of ball X. **/
-    private int ballxSpeed;
+    private int ballxSpeed = 5;
     /** current score. **/
     private int score = 0;
     /** current round. **/
@@ -95,7 +95,7 @@ public final class BallGame extends JComponent
      * @param round game round
      ********************************************/
     public static void gameMake(final int round) {
-        JFrame wind = new JFrame("RedBall/GamePinfo");
+        JFrame wind = new JFrame("Ball Bounce");
         BallGame g = new BallGame();
         wind.add(g);
         wind.pack();
@@ -156,10 +156,7 @@ public final class BallGame extends JComponent
     	ballx += ballxSpeed;
         bally += ballySpeed;
 
-        if (gameOverFlag) {
-        	round = 1;
-        	BallGame.main(round);
-        } else if (gameOver) {
+        if (gameOver) {
         	gameOverFlag = true;
         	//displays the dialog box indicating victory
             JOptionPane.showMessageDialog(this, "You lost on round"

@@ -17,7 +17,7 @@ public class SpaceInvaders extends JFrame implements SpaceCommons {
     private void initUI() {
 
         add(new SpaceBoard());
-        setTitle("Space Invaders");
+        setTitle("Goomba Invaders");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(BOARD_WIDTH, BOARD_HEIGHT);
         setLocationRelativeTo(null);

@@ -33,11 +33,14 @@ public class WarioWareGUI extends JFrame {
 
     /** Image Icon for one of the buttons. **/
     private ImageIcon thinkingMario;
-    
+
+    /** Image for ball. **/
     private ImageIcon ball;
-    
+
+    /** Image for coin. **/
     private ImageIcon coin;
-    
+
+    /** Image for Wario. **/
     private ImageIcon warioSpace;
 
     /** Adjusted size of images. **/
@@ -60,13 +63,17 @@ public class WarioWareGUI extends JFrame {
 
     /** Y coordinate where the coin game button will be placed. **/
     private static final int COIN_BUTTON_Y = 50;
-    
+
+    /** X coordinate for ball game button. **/
     private static final int BALL_BUTTON_X = 50;
-    
+
+    /** Y coordinate for ball game button. **/
     private static final int BALL_BUTTON_Y = 250;
-    
+
+    /** x coordinate for space game button. **/
     private static final int SPACE_BUTTON_X = 275;
-    
+
+    /** y coordinate for space game button. **/
     private static final int SPACE_BUTTON_Y = 250;
 
     /** X coordinate where the memory game button will be placed. **/
@@ -97,7 +104,7 @@ public class WarioWareGUI extends JFrame {
         guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         guiFrame.pack();
         guiFrame.setVisible(true);
-        
+
         //places the coin icon on the button and sets its parameters
         JButton coinSelect = new JButton("Coin Collect", coin);
         JPanel coinPanel = new JPanel();
@@ -109,7 +116,7 @@ public class WarioWareGUI extends JFrame {
 
         coinPanel.setBounds(COIN_BUTTON_X, COIN_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
-        
+
         //places the button on the GUI frame
         guiFrame.add(coinPanel);
         coinPanel.setVisible(true);
@@ -127,7 +134,7 @@ public class WarioWareGUI extends JFrame {
 
                 }
             });
-        
+
         //creates button, places mario icon on it, sets its parameters
         JButton memorySelect = new JButton("Memory Match", thinkingMario);
         JPanel memoryPanel = new JPanel();
@@ -136,7 +143,7 @@ public class WarioWareGUI extends JFrame {
                 BUTTON_WIDTH, BUTTON_HEIGHT);
         memorySelect.setHorizontalTextPosition(SwingConstants.CENTER);
         memorySelect.setVerticalTextPosition(SwingConstants.BOTTOM);
-        
+
         memoryPanel.setBounds(MEMORY_BUTTON_X, MEMORY_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
 
@@ -156,16 +163,16 @@ public class WarioWareGUI extends JFrame {
                 launchMemory();
                 }
             });
-        
+
       //Makes the button for the ball game
-        JButton ballSelect = new JButton("Ball Bounce",ball);
+        JButton ballSelect = new JButton("Ball Bounce", ball);
         JPanel ballPanel = new JPanel();
         ballPanel.add(ballSelect);
         ballSelect.setBounds(BALL_BUTTON_X, BALL_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
         ballSelect.setHorizontalTextPosition(SwingConstants.CENTER);
         ballSelect.setVerticalTextPosition(SwingConstants.BOTTOM);
-        
+
         ballPanel.setBounds(BALL_BUTTON_X, BALL_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
 
@@ -186,17 +193,17 @@ public class WarioWareGUI extends JFrame {
 
                 }
             });
-        
-        
+
+
         //Makes the button for the ball game
-        JButton spaceSelect = new JButton("Space Invasion",warioSpace);
+        JButton spaceSelect = new JButton("Space Invasion", warioSpace);
         JPanel spacePanel = new JPanel();
         spacePanel.add(spaceSelect);
         spaceSelect.setBounds(SPACE_BUTTON_X, SPACE_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
         spaceSelect.setHorizontalTextPosition(SwingConstants.CENTER);
         spaceSelect.setVerticalTextPosition(SwingConstants.BOTTOM);
-        
+
         spacePanel.setBounds(SPACE_BUTTON_X, SPACE_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
 
@@ -217,7 +224,7 @@ public class WarioWareGUI extends JFrame {
 
                 }
             });
-        
+
       // Creates an invisible "fixer" panel and button and sets its
       // parameters corrects a bug where buttons were not loading into
       // their intended locations
@@ -228,7 +235,7 @@ public class WarioWareGUI extends JFrame {
                 BUTTON_WIDTH, BUTTON_HEIGHT);
         spaceSelect.setHorizontalTextPosition(SwingConstants.CENTER);
         spaceSelect.setVerticalTextPosition(SwingConstants.BOTTOM);
-        
+
         spacePanel.setBounds(SPACE_BUTTON_X, SPACE_BUTTON_Y,
                 BUTTON_WIDTH, BUTTON_HEIGHT);
 
@@ -303,11 +310,17 @@ public class WarioWareGUI extends JFrame {
         b.setVisible(true);
 
         }
-    
+
+
+    /******************************************************************
+     * Instantiates the Ball Bounce game GUI as a MemoryBoard
+     * object and sets the parameters of the GUI. This also
+     * launches the game.
+     *****************************************************************/
     public void launchBall() {
-    	
-    	final int delay = 20;
-    	
+
+        final int delay = 20;
+
         JFrame wind = new JFrame("RedBall/GamePinfo");
         BallGame g = new BallGame();
         wind.add(g);
@@ -318,15 +331,21 @@ public class WarioWareGUI extends JFrame {
         wind.addMouseMotionListener(g);
 
         Timer tt = new Timer(delay, g);
-        tt.start();   
-    	
+        tt.start();
+
     }
-    
+
+    /******************************************************************
+     * Instantiates the Goomba Invaders game GUI as a MemoryBoard
+     * object and sets the parameters of the GUI. This also
+     * launches the game.
+     *****************************************************************/
+
     public void launchSpace() {
-        
+
             SpaceInvaders ex = new SpaceInvaders();
             ex.setVisible(true);
-            
+
     }
 
 
@@ -338,15 +357,15 @@ public class WarioWareGUI extends JFrame {
         thinkingMario = new ImageIcon(new ImageIcon("ThinkingMario.png")
                 .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
                         Image.SCALE_DEFAULT));
-        
+
         ball = new ImageIcon(new ImageIcon("ball.jpg")
                 .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
                         Image.SCALE_DEFAULT));
-        
+
         coin = new ImageIcon(new ImageIcon("coinAdjusted.jpg")
                 .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
                         Image.SCALE_DEFAULT));
-        
+
         warioSpace = new ImageIcon(new ImageIcon("warioSpace.png")
                 .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
                         Image.SCALE_DEFAULT));

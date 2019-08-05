@@ -110,6 +110,9 @@ public class MemoryBoard extends JFrame {
 
         //Initializes all icons
         initIcons();
+        
+        //Initializes timer
+        timeRemaining = timeInitial;
 
         /** creates a vector of Memorycard objects **/
         List<MemoryCard> cardsList = new ArrayList<MemoryCard>();
@@ -186,6 +189,8 @@ public class MemoryBoard extends JFrame {
         		
         		if (timeRemaining==0) {
         			
+        			gameTimer.stop();
+        			
                     //displays the dialog box indicating victory
                     JOptionPane.showMessageDialog(pane, "You lose!"
                     		+ "\nYou made it to round" + round + "!");
@@ -193,9 +198,6 @@ public class MemoryBoard extends JFrame {
                     //Returns to Warioware 2.0 Main Menu
                     dispose();
                     WarioWareGUI gui = new WarioWareGUI();
-                    
-                    //terminate the program upon acknowledgement of victory
-                    //System.exit(0);
         		}
         		
         	}
@@ -324,6 +326,8 @@ public class MemoryBoard extends JFrame {
 
             //checks if the game has been won
             if (this.isGameWon()) {
+            	
+                gameTimer.stop();
 
                 //displays the dialog box indicating victory
                 JOptionPane.showMessageDialog(this, "You win!");
@@ -391,6 +395,7 @@ public class MemoryBoard extends JFrame {
         
         //resets the timer
         timeRemaining = timeInitial;
+        gameTimer.start();
 
         //sets parameters of the new GUI
         b.setPreferredSize(new Dimension(GUI_WIDTH, GUI_HEIGHT));

@@ -47,7 +47,23 @@ public final class BallGame extends JComponent
     /** paddle location. **/
     private static final int PADDLE_LOC = 500;
     /** font size. **/
-    private static final int FONT_SIZE = 8;
+    private static final int FONT_SIZE = 50;
+    /** font style. **/
+    private static final int FONT_STYLE = 8;
+    /** x coordinate for score print. **/
+    private static final int STRING_X = 30;
+    /** y coordinate for score ptint. **/
+    private static final int STRING_Y = 80;
+    /** number of bounces that make up a round. **/
+    private static final int BOUNCE_ROUND = 10;
+    /** The number 25. **/
+    private static final int TWENTY_FIVE = 25;
+    /** The number 50. **/
+    private static final int FIFTY = 50;
+    /** Loss barrier coordinate. **/
+    private static final int LOSS_BARRIER = 500;
+    /** coordinate of the rght wall of the GUI. **/
+    private static final int RIGHT_WALL = 775;
 
 
     /** ball x location. **/
@@ -58,35 +74,23 @@ public final class BallGame extends JComponent
     private int paddlex = 0;
 
     /** speed of ball Y. **/
-    private int ballySpeed;
+    private int ballySpeed = BALL_Y_SPEED;
     /** speed of ball X. **/
-    private int ballxSpeed;
+    private int ballxSpeed = BALL_X_SPEED;
     /** current score. **/
     private int score = 0;
     /** current round. **/
     private int round = 1;
     /** current number of bounces. **/
     private int bounces = 0;
-    /** if game is over. **/
-    private static boolean gameOver = false;
-    /** flag for game over. **/
-    private static boolean gameOverFlag = false;
 
     /*********************************************
      * Starts Game.
      * @param round game round
      ********************************************/
     public static void main(final int round) {
-        //only true the first time the game is run
-    	if ((!gameOver) && (!gameOverFlag)) {
-    		gameMake(round);
-    	} else if ((gameOver) && (gameOverFlag)) {
-            //only true after the game has resulted in a loss
-    		gameOver = false;
-    	} else if (!gameOver) {
-            // only true after the game has resulted in a loss
-    		System.out.println("Game over.");
-    	}
+
+         gameMake(round);
 
     }
 
@@ -95,7 +99,7 @@ public final class BallGame extends JComponent
      * @param round game round
      ********************************************/
     public static void gameMake(final int round) {
-        JFrame wind = new JFrame("RedBall/GamePinfo");
+        JFrame wind = new JFrame("Ball Bounce");
         BallGame g = new BallGame();
         wind.add(g);
         wind.pack();
@@ -145,49 +149,48 @@ public final class BallGame extends JComponent
         g.fillOval(ballx, bally, BALL_DIMENSION, BALL_DIMENSION);
         // write score
         g.setColor(Color.white);
-        g.setFont(new Font("Arial", FONT_SIZE, 50));
-        g.drawString(String.valueOf(score), 30, 80);
+        g.setFont(new Font("Arial", FONT_STYLE, FONT_SIZE));
+        g.drawString(String.valueOf(score), STRING_X, STRING_Y);
 
     }
 
     @Override
     public void actionPerformed(final ActionEvent e) {
-    	//Manages ball movement
-    	ballx += ballxSpeed;
+        //Manages ball movement
+        ballx += ballxSpeed;
         bally += ballySpeed;
 
-        if (gameOverFlag) {
-        	round = 1;
-        	BallGame.main(round);
-        } else if (gameOver) {
-        	gameOverFlag = true;
-        	//displays the dialog box indicating victory
-            JOptionPane.showMessageDialog(this, "You lost on round"
-            		+ round + "!");
-            ballx = BALL_X_START;
-            bally = BALL_Y_START;
-            //terminate the program upon acknowledgement of loss
-            System.exit(0);
-        } else if (bounces == 10) {
-        	//reset score
-        	bounces = 0;
-        	round++;
-        	JOptionPane.showMessageDialog(this, "You Win! You move on to"
-        			+ " round " + round + "!");
-        } else if (ballx >= paddlex && ballx <= paddlex + PADDLE_WIDTH && bally >= (PADDLE_LOC - 25)) {
+        if (bounces == BOUNCE_ROUND) {
+
+            //reset score
+            bounces = 0;
+            round++;
+            JOptionPane.showMessageDialog(this, "You Win! You move on to"
+                    + " round " + round + "!");
+
+        } else if (ballx >= paddlex && ballx <= paddlex + PADDLE_WIDTH && bally >= (PADDLE_LOC - TWENTY_FIVE)) {
             // Sets ball speed upward if it hits the paddle
             ballySpeed = -BALL_Y_SPEED - (round * 2);
             //monitors the number of times the ball is successfully hit
             score++;
             bounces++;
 
-        } else if (bally >= 500) {
+        } else if (bally >= LOSS_BARRIER) {
+
             // Handles loss condition
-            gameOver = true;
+            //displays the dialog box indicating victory
+            JOptionPane.showMessageDialog(this, "You lost on round"
+                    + round + "!");
+            ballx = BALL_X_START;
+            bally = BALL_Y_START;
+
+            //terminate the program upon acknowledgement of loss
+            System.exit(0);
+
         } else if (bally <= 0) {
             // Sets ball movement down if it hits the ceiling
             ballySpeed = BALL_Y_SPEED + (round * 2);
-        } else if (ballx >= 775) {
+        } else if (ballx >= RIGHT_WALL) {
             // Sets ball
             ballxSpeed = -BALL_X_SPEED - (round * 2);
         } else if (ballx <= 0) {
@@ -199,8 +202,8 @@ public final class BallGame extends JComponent
 
     @Override
     public void mouseMoved(final MouseEvent e) {
-    	//places paddle in middle of mouse
-        paddlex = e.getX() - 50;
+        //places paddle in middle of mouse
+        paddlex = e.getX() - FIFTY;
         repaint();
     }
 

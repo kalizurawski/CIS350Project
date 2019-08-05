@@ -31,6 +31,7 @@ public class WarioWareGUI extends JFrame {
 
     /** mario icon. **/
     private ImageIcon thinkingMario;
+
     /** ball icon. **/
     private ImageIcon ball;
     /** coin icon. **/
@@ -315,12 +316,15 @@ public class WarioWareGUI extends JFrame {
         thinkingMario = new ImageIcon(new ImageIcon("ThinkingMario.png")
                 .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
                         Image.SCALE_DEFAULT));
+
         ball = new ImageIcon(new ImageIcon("ball.jpg")
                 .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
                         Image.SCALE_DEFAULT));
+
         coin = new ImageIcon(new ImageIcon("coinAdjusted.jpg")
                 .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
                         Image.SCALE_DEFAULT));
+
         warioSpace = new ImageIcon(new ImageIcon("warioSpace.png")
                 .getImage().getScaledInstance(IMAGE_SIZE, IMAGE_SIZE,
                         Image.SCALE_DEFAULT));

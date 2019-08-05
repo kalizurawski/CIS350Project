@@ -26,7 +26,7 @@ import java.util.Collections;
 @SuppressWarnings("serial")
 
 public class MemoryBoard extends JFrame {
-	
+
     /** vector of cards. **/
     private List<MemoryCard> cards;
 
@@ -75,15 +75,19 @@ public class MemoryBoard extends JFrame {
     /** Yoshi Image. **/
     private ImageIcon yoshi;
 
-    /** counter for round number. **/
+    /** round number. **/
     private static int round = 1;
 
-    /** remaining time for game. **/
-    private static int timeRemaining = 120;
+    /** 120. **/
+    private static final int ONE_HUNDRED_TWENTY = 120;
 
-    /** initial time for game. **/
-    private static int timeInitial = 120;
-    
+    /** time remaining. **/
+    private static int timeRemaining = ONE_HUNDRED_TWENTY;
+
+    /** timeInitial. **/
+    private static int timeInitial = ONE_HUNDRED_TWENTY;
+
+    /** 1000 milliseconds in a second. **/
     private static final int SECOND = 1000;
 
     /** The delay after looking at cards. **/
@@ -110,7 +114,7 @@ public class MemoryBoard extends JFrame {
 
         //Initializes all icons
         initIcons();
-        
+
         //Initializes timer
         timeRemaining = timeInitial;
 
@@ -151,7 +155,7 @@ public class MemoryBoard extends JFrame {
                     doTurn();
                     }
                 });
-            
+
             cardsList.add(c);
             }
         this.cards = cardsList;
@@ -176,46 +180,46 @@ public class MemoryBoard extends JFrame {
             pane.add(c);
             }
         setTitle("Memory Match");
-        
-        
+
+
         //starts game timer
         ActionListener actListner = new ActionListener() {
 
-        	@Override
-        	public void actionPerformed(ActionEvent event) {
-        		timeRemaining -= 1;
-        		setTitle("          Time Remaining: "+ timeRemaining + 
-        				"          Round: " + round);
-        		
-        		if (timeRemaining==0) {
-        			
-        			gameTimer.stop();
-        			
+            @Override
+            public void actionPerformed(final ActionEvent event) {
+                timeRemaining -= 1;
+                setTitle("          Time Remaining: " + timeRemaining
+                + "          Round: " + round);
+
+                    if (timeRemaining == 0) {
+
+                    gameTimer.stop();
+
                     //displays the dialog box indicating victory
                     JOptionPane.showMessageDialog(pane, "You lose!"
-                    		+ "\nYou made it to round" + round + "!");
+                            + "\nYou made it to round" + round + "!");
 
                     //Returns to Warioware 2.0 Main Menu
                     dispose();
                     WarioWareGUI gui = new WarioWareGUI();
-        		}
-        		
-        	}
+                }
+
+            }
         };
 
         gameTimer = new Timer(SECOND, actListner);
         gameTimer.start();
-        
+
         }
-    
+
 
     /******************************************************************
      * Handles the visual aspect of selecting each card.
     *****************************************************************/
     public void doTurn() {
-    	
-		setTitle("          Time Remaining: "+ timeRemaining + 
-				"          Round: " + round);
+
+        setTitle("          Time Remaining: " + timeRemaining
+                + "          Round: " + round);
 
         //when the first card is selected
         if (c1 == null && c2 == null) {
@@ -326,7 +330,7 @@ public class MemoryBoard extends JFrame {
 
             //checks if the game has been won
             if (this.isGameWon()) {
-            	
+
                 gameTimer.stop();
 
                 //displays the dialog box indicating victory
@@ -335,7 +339,7 @@ public class MemoryBoard extends JFrame {
                 round++;
                 dispose();
                 reRunGame();
-                
+
                 //terminate the program upon acknowledgement of victory
                 //System.exit(0);
                 }
@@ -372,41 +376,41 @@ public class MemoryBoard extends JFrame {
         }
 
     /******************************************************************
-     * Reruns the game with a decreased timer
+     * Reruns the game with a decreased timer.
      *******************************************************************/
-    
+
     public void reRunGame() {
-        
+
         /** The X coordinate where the gui will be placed. **/
-        final int FRAME_X_LOCATION = 500;
+        final int frameXLocation = 500;
 
         /** The Y coordinate where the gui will be placed. **/
-        final int FRAME_Y_LOCATION = 250;
+        final int frameYLocation = 250;
 
         /** The gui width. **/
-        final int GUI_WIDTH = 500;
+        final int guiWidth = 500;
 
         /** The gui height. **/
-        final int GUI_HEIGHT = 500;
-    	
-    	//Creates the new GUI object for the memory match game
+        final int guiHeight = 500;
+
+        //Creates the new GUI object for the memory match game
         //This also launches the game
         MemoryBoard b = new MemoryBoard();
-        
+
         //resets the timer
         timeRemaining = timeInitial;
         gameTimer.start();
 
         //sets parameters of the new GUI
-        b.setPreferredSize(new Dimension(GUI_WIDTH, GUI_HEIGHT));
-        b.setLocation(FRAME_X_LOCATION, FRAME_Y_LOCATION);
+        b.setPreferredSize(new Dimension(guiWidth, guiHeight));
+        b.setLocation(frameXLocation, frameYLocation);
         b.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         b.pack();
         b.setVisible(true);
-        
+
     }
-    
-    
+
+
     /******************************************************************
      * Initializes all icons.
      *****************************************************************/
